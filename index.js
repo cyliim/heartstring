@@ -5,21 +5,6 @@ const config = require("./config.json")
 var ball =["It is certain.", "It is decidedly so.", "Without a doubt.", "Yes - definitely.", "You may rely on it.", "As I see it, yes.", "Most likely.", "Outlook good.", "Yes.", "Signs point to yes.", "Reply hazy, try again.", "Ask again later.", "Better not tell you now.", "Cannot predict now.", "Concentrate and ask again.", " Don't count on it.", "My reply is no.", "My sources say no.", "Outlook not so good.", "Very doubtful."];
 client.on("ready", () => {
     client.user.setActivity(`ph!help`)
-    console.log("------------------------------------");
-    console.log(`Logged in as ${client.user.username}#${client.user.discriminator}`)
-    console.log("Bot is up and ready for use")
-    console.log(`${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`)
-    console.log("------------------------------------");
-    client.on("guildCreate", guild => {
-        console.log("------------Guild Joined------------");
-        console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
-        console.log("------------------------------------");
-      });
-      
-      client.on("guildDelete", guild => {
-        console.log("------------Guild Removed------------");
-        console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
-        console.log("-------------------------------------");
       });
   });
   client.on("message", async message => {
