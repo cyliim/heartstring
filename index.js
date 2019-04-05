@@ -5,7 +5,7 @@ const math = require("mathjs")
 //8ball list
 var ball =["It is certain.", "It is decidedly so.", "Without a doubt.", "Yes - definitely.", "You may rely on it.", "As I see it, yes.", "Most likely.", "Outlook good.", "Yes.", "Signs point to yes.", "Reply hazy, try again.", "Ask again later.", "Better not tell you now.", "Cannot predict now.", "Concentrate and ask again.", " Don't count on it.", "My reply is no.", "My sources say no.", "Outlook not so good.", "Very doubtful."];
 client.on("ready", () => {
-    client.user.setActivity(`ph!help`)
+    client.user.setActivity(`h.help`)
       });
   client.on("message", async message => {
     const date = message.author.createdAt;
@@ -55,6 +55,7 @@ const mathembed = new Discord.RichEmbed()
 .addField("Input", `\`\`\`js\n${args.join("")}\`\`\``)
 .addField("Output", `\`\`\`js\n${resp}\`\`\``)
 message.channel.send(mathembed)
+      
 //uptime
 
 
@@ -202,46 +203,7 @@ if (message.content.startsWith(config.prefix + "purge")) {
         .setThumbnail(message.guild.iconURL)
     message.channel.send({embed});
 
-if (message.channel.send(config.prefix + "si")) {
-  function checkDays(date) {
-    let now = new Date();
-    let diff = now.getTime() - date.getTime();
-    let days = Math.floor(diff / 86400000);
-    return days + (days == 1 ? " day" : " days") + " ago";
-};
-let verifLevels = ["None", "Low", "Medium", "(╯°□°）╯︵  ┻━┻", "┻━┻ミヽ(ಠ益ಠ)ノ彡┻━┻"];
-let region = {
-    "brazil": ":flag_br: Brazil",
-    "eu-central": ":flag_eu: Central Europe",
-    "singapore": ":flag_sg: Singapore",
-    "us-central": ":flag_us: U.S. Central",
-    "sydney": ":flag_au: Sydney",
-    "us-east": ":flag_us: U.S. East",
-    "us-south": ":flag_us: U.S. South",
-    "us-west": ":flag_us: U.S. West",
-    "eu-west": ":flag_eu: Western Europe",
-    "vip-us-east": ":flag_us: VIP U.S. East",
-    "london": ":flag_gb: London",
-    "amsterdam": ":flag_nl: Amsterdam",
-    "hongkong": ":flag_hk: Hong Kong",
-    "russia": ":flag_ru: Russia",
-    "southafrica": ":flag_za:  South Africa"
-};
-const embed2 = new Discord.RichEmbed()
-.setColor(0x333333)
-    .setAuthor(message.guild.name, message.guild.iconURL)
-    .addField("Name", message.guild.name, true)
-    .addField("ID", message.guild.id, true)
-    .addField("Owner", `${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`, true)
-    .addField("Region", region[message.guild.region], true)
-    .addField("Total | Humans | Bots", `${message.guild.members.size} | ${message.guild.members.filter(member => !member.user.bot).size} | ${message.guild.members.filter(member => member.user.bot).size}`, true)
-    .addField("Verification Level", verifLevels[message.guild.verificationLevel], true)
-    .addField("Channels", message.guild.channels.size, true)
-    .addField("Roles", message.guild.roles.size, true)
-    .addField("Creation Date", `${message.channel.guild.createdAt.toUTCString().substr(0, 16)} (${checkDays(message.channel.guild.createdAt)})`, true)
-    .setThumbnail(message.guild.iconURL)
-message.channel.send({embed2});
-}
+
 
 //botinfo
 
@@ -392,15 +354,15 @@ message.channel.send({embed2});
             },
             {
               name: "Say",
-              value: "Makes the bot say whatever you put after the command. `Requires the 'Manage Messages' permission`. Usage: ph!say **<text>**"
+              value: "Makes the bot say whatever you put after the command. `Requires the 'Manage Messages' permission`. Usage: h.say **<text>**"
             },
             {
               name: "Roll",
-              value: "Rolls a dice. Usage: ph!roll **<number>**"
+              value: "Rolls a dice. Usage: h.roll **<number>**"
             },
             {
               name: "Avatar",
-              value: "Shows your avatar, unless prompted with a mention. Usage: ph!avatar **[@user]**"
+              value: "Shows your avatar, unless prompted with a mention. Usage: h.avatar **[@user]**"
             },
             {
               name: "Uptime",
@@ -411,8 +373,12 @@ message.channel.send({embed2});
               value: "Acts like a magic 8ball"
             },
             {
+              name: "Math",
+              value: "Acts as a calculator. Use `*` for multiplication and `/` for division."
+            },
+            {
               name: "Userinfo",
-              value: "Shows your user info if not prompted with mention, otherwise displays info of the user you have mentioned. Alias: `ui`. Usage: ph!userinfo **[user]**"
+              value: "Shows your user info if not prompted with mention, otherwise displays info of the user you have mentioned. Alias: `ui`. Usage: h.userinfo **[user]**"
             },
             {
               name: "Botinfo",
@@ -424,15 +390,15 @@ message.channel.send({embed2});
             },
             {
               name: "Purge",
-              value: "Deletes the number of messages you specify (between 2 and 100) `Requires the 'Manage Messages' permission`. Usage: ph!purge **<amount>**"
+              value: "Deletes the number of messages you specify (between 2 and 100) `Requires the 'Manage Messages' permission`. Usage: h.purge **<amount>**"
             },
             {
               name: "Kick",
-              value: "Kicks a user. `Requires the 'Kick' permission`. Usage: ph!kick **<user> [reason]**"
+              value: "Kicks a user. `Requires the 'Kick' permission`. Usage: h.kick **<user> [reason]**"
             },
             {
               name: "Ban",
-              value: "Bans a member. `Requires the 'Ban' permission`. Usage: ph!ban **<user> [reason]**"
+              value: "Bans a member. `Requires the 'Ban' permission`. Usage: h.ban **<user> [reason]**"
             },
             {
               name: "Eval",
