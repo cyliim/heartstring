@@ -23,7 +23,6 @@ client.on("ready", () => {
       });
   });
   client.on("message", async message => {
-    client.on('error', client.channels.get("563804889268879390").send(error));
     const date = message.author.createdAt;
     const newDate = date.toLocaleDateString();
     if (!message.content.startsWith(config.prefix) || message.author.bot) return;
