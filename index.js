@@ -209,7 +209,7 @@ let region = {
     "russia": ":flag_ru: Russia",
     "southafrica": ":flag_za:  South Africa"
 };
-const embed = new Discord.RichEmbed()
+const embed2 = new Discord.RichEmbed()
 .setColor(0x333333)
     .setAuthor(message.guild.name, message.guild.iconURL)
     .addField("Name", message.guild.name, true)
@@ -222,7 +222,7 @@ const embed = new Discord.RichEmbed()
     .addField("Roles", message.guild.roles.size, true)
     .addField("Creation Date", `${message.channel.guild.createdAt.toUTCString().substr(0, 16)} (${checkDays(message.channel.guild.createdAt)})`, true)
     .setThumbnail(message.guild.iconURL)
-message.channel.send({embed});
+message.channel.send({embed2});
 }
 
 //botinfo
