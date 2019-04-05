@@ -413,4 +413,4 @@ if (message.content.startsWith(config.prefix + "purge")) {
         } 
       });
   }});
-  client.login(config.token);
+  client.login(process.env.token);
