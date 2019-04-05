@@ -48,7 +48,7 @@ message.channel.send(repl3)
         } catch (e) {
           return message.channel.send("You need to input a __**valid**__ calculation");
         }
-const mathembed = new Discord.MessageEmbed()
+const mathembed = new Discord.RichEmbed()
 .setColor(0x333333)
 .setTitle("Heartstring Math", client.user.avatarURL)
 .setDescription("Math Calculation")
@@ -447,4 +447,4 @@ message.channel.send({embed2});
         } 
       });
   }});
-  client.login(process.env.token);
+  client.login(config.token);
