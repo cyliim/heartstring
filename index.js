@@ -96,7 +96,7 @@ message.channel.send(repl3)
       }
       const diceRoll = args.join(" ");
       message.channel.send(`You rolled ${Math.floor(Math.random() * diceRoll) + 1}`);
-     }
+     })
       //purge
 if (message.content.startsWith(config.prefix + "purge")) {
   const deleteCount = parseInt(args[0], 10);
