@@ -6,7 +6,6 @@ var ball =["It is certain.", "It is decidedly so.", "Without a doubt.", "Yes - d
 client.on("ready", () => {
     client.user.setActivity(`ph!help`)
       });
-  });
   client.on("message", async message => {
     const date = message.author.createdAt;
     const newDate = date.toLocaleDateString();
