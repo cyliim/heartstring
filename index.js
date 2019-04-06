@@ -364,6 +364,10 @@ if (message.content.startsWith(config.prefix + "purge")) {
               value: "Acts like a magic 8ball"
             },
             {
+              name: "Suggest",
+              value: "Sends a suggestion to the developer."
+            },
+            {
               name: "Userinfo",
               value: "Shows your user info if not prompted with mention, otherwise displays info of the user you have mentioned. Alias: `ui`. Usage: h.userinfo **[user]**"
             },
