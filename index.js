@@ -388,4 +388,4 @@ if (message.content.startsWith(config.prefix + "purge")) {
         } 
       });
   }});
-  client.login("process.env.token");
+  client.login(process.env.token);
