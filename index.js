@@ -215,7 +215,7 @@ if (message.content.startsWith(config.prefix + "purge")) {
           },
           {
             name: "Commands:",
-            value: "14 Commands"
+            value: "15 Commands"
           },
         ],
           timestamp: new Date(),
@@ -247,6 +247,10 @@ if (message.content.startsWith(config.prefix + "purge")) {
           {
             name: "discord.js Version",
             value: Discord.version  
+          },
+          {
+            name: "Commands:",
+            value: "15 Commands"
           },
         ],
           timestamp: new Date(),
