@@ -1,7 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json")
-const math = require("mathjs")
 //8ball list
 var ball =["It is certain.", "It is decidedly so.", "Without a doubt.", "Yes - definitely.", "You may rely on it.", "As I see it, yes.", "Most likely.", "Outlook good.", "Yes.", "Signs point to yes.", "Reply hazy, try again.", "Ask again later.", "Better not tell you now.", "Cannot predict now.", "Concentrate and ask again.", " Don't count on it.", "My reply is no.", "My sources say no.", "Outlook not so good.", "Very doubtful."];
 client.on("ready", () => {
@@ -40,22 +39,7 @@ message.channel.send(repl3)
       message.channel.send(sayMessage);
 
 //math
-      } if (message.content.startsWith(config.prefix + "math")) {
-        if (!args[0]) return message.channel.send("You need to input an calculation");
-        let resp;
-        try {
-          resp = math.eval(args.join(" "));
-        } catch (e) {
-          return message.channel.send("You need to input a __**valid**__ calculation");
-        }
-const mathembed = new Discord.RichEmbed()
-.setColor(0x333333)
-.setTitle("Heartstring Math", client.user.avatarURL)
-.setDescription("Math Calculation")
-.addField("Input", `\`\`\`js\n${args.join("")}\`\`\``)
-.addField("Output", `\`\`\`js\n${resp}\`\`\``)
-message.channel.send(mathembed)
-      
+   
 //uptime
 
 
