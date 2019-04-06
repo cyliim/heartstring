@@ -38,12 +38,6 @@ message.channel.send(repl3)
       message.delete().catch(O_o=>{}); 
       message.channel.send(sayMessage);
 
-//math
-   
-      
-//uptime
-
-
        } if (message.content.startsWith(config.prefix + "uptime")) {
       let totalSeconds = (client.uptime / 1000);
       let days = Math.floor(totalSeconds / 86400);
