@@ -242,6 +242,10 @@ if (message.content.startsWith(config.prefix + "purge")) {
             name: "discord.js Version",
             value: Discord.version  
           },
+          {
+            name: "Commands:",
+            value: "14 Commands"
+          },
         ],
           timestamp: new Date(),
           footer: {
