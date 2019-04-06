@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const config = require("config.json")
+const config = require("./config.json")
 //8ball list
 var ball =["It is certain.", "It is decidedly so.", "Without a doubt.", "Yes - definitely.", "You may rely on it.", "As I see it, yes.", "Most likely.", "Outlook good.", "Yes.", "Signs point to yes.", "Reply hazy, try again.", "Ask again later.", "Better not tell you now.", "Cannot predict now.", "Concentrate and ask again.", " Don't count on it.", "My reply is no.", "My sources say no.", "Outlook not so good.", "Very doubtful."];
 client.on("ready", () => {
@@ -352,10 +352,6 @@ if (message.content.startsWith(config.prefix + "purge")) {
               value: "Acts like a magic 8ball"
             },
             {
-              name: "Math",
-              value: "Acts as a calculator. Use `*` for multiplication and `/` for division."
-            },
-            {
               name: "Userinfo",
               value: "Shows your user info if not prompted with mention, otherwise displays info of the user you have mentioned. Alias: `ui`. Usage: h.userinfo **[user]**"
             },
@@ -365,7 +361,7 @@ if (message.content.startsWith(config.prefix + "purge")) {
             },
             {
               name: "Serverinfo",
-              value: "Shows info on the server. Alias: `si`"
+              value: "Shows info on the server."
             },
             {
               name: "Purge",
@@ -392,4 +388,4 @@ if (message.content.startsWith(config.prefix + "purge")) {
         } 
       });
   }});
-  client.login(process.env.token);
+  client.login("process.env.token");
