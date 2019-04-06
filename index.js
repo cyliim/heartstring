@@ -182,8 +182,6 @@ if (message.content.startsWith(config.prefix + "purge")) {
         .setThumbnail(message.guild.iconURL)
     message.channel.send({embed});
 
-
-
 //botinfo
 
     } if (message.content.startsWith(config.prefix + "bi")) {
@@ -208,6 +206,10 @@ if (message.content.startsWith(config.prefix + "purge")) {
           {
             name: "discord.js Version",
             value: Discord.version  
+          },
+          {
+            name: "Commands:",
+            value: "14 Commands"
           },
         ],
           timestamp: new Date(),
