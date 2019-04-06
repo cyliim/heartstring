@@ -26,6 +26,12 @@ client.on("ready", () => {
       } if (message.content.startsWith(config.prefix + `8ball`)) {
   var repl3 = ball[Math.floor(Math.random()*ball.length)];
 message.channel.send(repl3)
+} if (message.content.startsWith(config.prefix + "suggest")) {
+  if (!args.length) {
+    return message.channel.send(`You need to provide a suggestion`);
+    }
+client.channels.get("563804889268879390").send("New Suggestion: **" + args.join(" ") + `** From: ${message.author.username}#${message.author.discriminator}`)
+message.channel.send("Thank you for your suggestion")
 //say
 
        } if (message.content.startsWith(config.prefix + "say")) {
@@ -241,10 +247,6 @@ if (message.content.startsWith(config.prefix + "purge")) {
           {
             name: "discord.js Version",
             value: Discord.version  
-          },
-          {
-            name: "Commands:",
-            value: "14 Commands"
           },
         ],
           timestamp: new Date(),
