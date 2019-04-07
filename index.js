@@ -199,23 +199,28 @@ if (message.content.startsWith(config.prefix + "purge")) {
         },
         fields: [{
             name: "Users",
-            value: `${client.users.size}`
+            value: `${client.users.size}`,
+            inline: true
           },
           {
             name: "Servers",
-            value: `${client.guilds.size}`
+            value: `${client.guilds.size}`,
+              inline: true
           },
           {
             name: "Version",
-            value: "Alpha InDev"
+            value: "Alpha InDev",
+              inline: true
           },
           {
             name: "discord.js Version",
-            value: Discord.version  
+            value: Discord.version,
+              inline: true
           },
           {
             name: "Commands:",
-            value: "15 Commands"
+            value: "15 Commands",
+              inline: true
           },
         ],
           timestamp: new Date(),
@@ -233,23 +238,28 @@ if (message.content.startsWith(config.prefix + "purge")) {
         title: "Bot info",
         fields: [{
             name: "Users",
-            value: `${client.users.size}`
+            value: `${client.users.size}`,
+            inline: true
           },
           {
             name: "Servers",
-            value: `${client.guild.size}`
+            value: `${client.guild.size}`,
+              inline: true
           },
           {
             name: "Version",
-            value: "Alpha InDev"
+            value: "Alpha InDev",
+              inline: true
           },
           {
             name: "discord.js Version",
-            value: Discord.version  
+            value: Discord.version,
+              inline: true
           },
           {
             name: "Commands:",
-            value: "15 Commands"
+            value: "15 Commands",
+              inline: true
           },
         ],
           timestamp: new Date(),
