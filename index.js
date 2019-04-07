@@ -218,7 +218,7 @@ if (message.content.startsWith(config.prefix + "purge")) {
               inline: true
           },
           {
-            name: "Commands:",
+            name: "Commands",
             value: "15 Commands",
               inline: true
           },
