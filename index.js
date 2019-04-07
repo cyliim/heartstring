@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const config = require("./config.json")
+const config = require("./config.json");
 //8ball list
 var ball =["It is certain.", "It is decidedly so.", "Without a doubt.", "Yes - definitely.", "You may rely on it.", "As I see it, yes.", "Most likely.", "Outlook good.", "Yes.", "Signs point to yes.", "Reply hazy, try again.", "Ask again later.", "Better not tell you now.", "Cannot predict now.", "Concentrate and ask again.", " Don't count on it.", "My reply is no.", "My sources say no.", "Outlook not so good.", "Very doubtful."];
 client.on("ready", () => {
@@ -268,6 +268,7 @@ if (message.content.startsWith(config.prefix + "purge")) {
             text: "Created by Brickman#4669"
           }}})
       
+
 //user info
 } if  (message.content.startsWith(config.prefix + "ui")) {
   let status = {
@@ -277,7 +278,7 @@ if (message.content.startsWith(config.prefix + "purge")) {
     "offline": "<:offline:564312891159871498> Offline"
   };
   let game = {
-    "null": "No game"
+    "null": "Nothing"
   }
 let memberInfo = message.mentions.members.first();
 if(!memberInfo){
