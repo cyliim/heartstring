@@ -231,7 +231,6 @@ if (message.content.startsWith(config.prefix + "purge")) {
           icon_url: client.user.avatarURL
         },
         title: "Bot info",
-        description: "Info one the Heartstring Bot",
         fields: [{
             name: "Users",
             value: `${client.users.size}`
@@ -261,6 +260,12 @@ if (message.content.startsWith(config.prefix + "purge")) {
       
 //user info
          } if  (message.content.startsWith(config.prefix + "ui")) {
+          let status = {
+            "online": "<:online:564312732388556800> Online",
+            "idle": "<:idle:564312674893299712> Idle",
+            "dnd": "<:dnd:564312639753289734> Do Not Disturb",
+            "offline": "<:offline:564312891159871498> Offline"
+          };
       let memberInfo = message.mentions.members.first();
       if(!memberInfo){
       var userinf = new Discord.RichEmbed()
@@ -268,12 +273,12 @@ if (message.content.startsWith(config.prefix + "purge")) {
       .setThumbnail(message.author.avatarURL)
       .setDescription("Guild: " + message.guild)
       .setColor(0x333333)
-      .addField("Full Username: ", `${message.author.username}#${message.author.discriminator}`)
-      .addField("ID:", message.author.id)
-      .addField('Current Nickname: ', message.author.toString())
-      .addField("Current Status: ", message.author.presence.status)
-      .addField("Currently Playing: ", message.author.presence.game)
-      .addField("Created On: ", newDate)
+      .addField("Full Username: ", `${message.author.username}#${message.author.discriminator}`, true)
+      .addField("ID:", message.author.id, true)
+      .addField('Current Nickname: ', message.author.toString(), true)
+      .addField("Current Status: ", status[message.author.presence.status], true)
+      .addField("Currently Playing: ", message.author.presence.game, true)
+      .addField("Created On: ", newDate, true)
       .setFooter("Created by Brickman#4669", client.user.avatarURL)
 
       message.channel.send(userinf);
@@ -283,16 +288,22 @@ if (message.content.startsWith(config.prefix + "purge")) {
       .setThumbnail(memberInfo.user.avatarURL)
       .setDescription("Guild: " + message.guild)
       .setColor(0x333333)
-      .addField("Full Username:", `${memberInfo.user.username}#${memberInfo.user.discriminator}`)
-      .addField("ID:", memberInfo.id)
-      .addField('Current Nickname: ', memberInfo.toString())
-      .addField("Current Status: ", memberInfo.user.presence.status)
-      .addField("Currently Playing: ", memberInfo.user.presence.game)
-      .addField("Created On: ", "undefined")
+      .addField("Full Username:", `${memberInfo.user.username}#${memberInfo.user.discriminator}`, true)
+      .addField("ID:", memberInfo.id, true)
+      .addField('Current Nickname: ', memberInfo.toString(), true)
+      .addField("Current Status: ", status[memberInfo.user.presence.status], true)
+      .addField("Currently Playing: ", memberInfo.user.presence.game, true)
+      .addField("Created On: ", memberInfo.user.createdAt, true)
       .setFooter("Created by Brickman#4669", client.user.avatarURL)
       message.channel.send(userinfoo);
       }
     } if (message.content.startsWith(config.prefix + "userinfo")) {
+      let status = {
+        "online": "<:online:564312732388556800> Online",
+        "idle": "<:idle:564312674893299712> Idle",
+        "dnd": "<:dnd:564312639753289734> Do Not Disturb",
+        "offline": "<:offline:564312891159871498> Offline"
+      };
       let memberInfo = message.mentions.members.first();
       if(!memberInfo){
       var userinf = new Discord.RichEmbed()
@@ -300,12 +311,12 @@ if (message.content.startsWith(config.prefix + "purge")) {
       .setThumbnail(message.author.avatarURL)
       .setDescription("Guild: " + message.guild)
       .setColor(0x333333)
-      .addField("Full Username: ", `${message.author.username}#${message.author.discriminator}`)
-      .addField("ID:", message.author.id)
-      .addField('Current Nickname: ', message.author.toString())
-      .addField("Current Status: ", message.author.presence.status)
-      .addField("Currently Playing: ", message.author.presence.game)
-      .addField("Created On: ", newDate)
+      .addField("Full Username: ", `${message.author.username}#${message.author.discriminator}`, true)
+      .addField("ID:", message.author.id, true)
+      .addField('Current Nickname: ', message.author.toString(), true)
+      .addField("Current Status: ", status[message.author.presence.status], true)
+      .addField("Currently Playing: ", message.author.presence.game, true )
+      .addField("Created On: ", newDate, true)
       .setFooter("Created by Brickman#4669", client.user.avatarURL)
 
       message.channel.send(userinf);
@@ -316,13 +327,12 @@ if (message.content.startsWith(config.prefix + "purge")) {
       .setThumbnail(memberInfo.user.avatarURL)
       .setDescription("Guild: " + message.guild)
       .setColor(0x333333)
-      .addField("Full Username:", `${memberInfo.user.username}#${memberInfo.user.discriminator}`)
-      .addField("ID:", memberInfo.id)
-      .addField("Current Status: ", message.author.presence.status)
-      .addField("Currently Playing: ", message.author.presence.game)
-      .addField("Created On: ", "undefined")
+      .addField("Full Username:", `${memberInfo.user.username}#${memberInfo.user.discriminator}`, true)
+      .addField("ID:", memberInfo.id, true)
+      .addField("Current Status: ", status[message.author.presence.status], true)
+      .addField("Currently Playing: ", message.author.presence.game, true)
+      .addField("Created On: ", memberInfo.user.createdAt, true)
       .setFooter("Created by Brickman#4669", client.user.avatarURL)
-      .setTimestamp("Heartstring")
       message.channel.send(userinfoo);
       }
     //help
@@ -337,63 +347,78 @@ if (message.content.startsWith(config.prefix + "purge")) {
           description: "Heartstring Help",
           fields: [{
               name: "Help",
-              value: "Brings up this help menu."
+              value: "Brings up this help menu.",
+              inline: true
             },
             {
               name: "Ping",
-              value: "Shows the latency and API latency of the bot."
+              value: "Shows the latency and API latency of the bot.",
+              inline: true
             },
             {
               name: "Say",
-              value: "Makes the bot say whatever you put after the command. `Requires the 'Manage Messages' permission`. Usage: h.say **<text>**"
+              value: "Makes the bot say whatever you put after the command. `Requires the 'Manage Messages' permission`. Usage: h.say **<text>**",
+              inline: true
             },
             {
               name: "Roll",
-              value: "Rolls a dice. Usage: h.roll **<number>**"
+              value: "Rolls a dice. Usage: h.roll **<number>**",
+              inline: true
             },
             {
               name: "Avatar",
-              value: "Shows your avatar, unless prompted with a mention. Usage: h.avatar **[@user]**"
+              value: "Shows your avatar, unless prompted with a mention. Usage: h.avatar **[@user]**",
+              inline: true
             },
             {
               name: "Uptime",
-              value: "Shows the uptime of the bot"
+              value: "Shows the uptime of the bot",
+              inline: true
             },
             {
               name: "8ball",
-              value: "Acts like a magic 8ball"
+              value: "Acts like a magic 8ball",
+              inline: true
             },
             {
               name: "Suggest",
-              value: "Sends a suggestion to the developer."
+              value: "Sends a suggestion to the developer.",
+              inline: true
             },
             {
               name: "Userinfo",
-              value: "Shows your user info if not prompted with mention, otherwise displays info of the user you have mentioned. Alias: `ui`. Usage: h.userinfo **[user]**"
+              value: "Shows your user info if not prompted with mention, otherwise displays info of the user you have mentioned. Alias: `ui`. Usage: h.userinfo **[user]**",
+              inline: true
             },
             {
               name: "Botinfo",
-              value: "Shows info on the bot. Alias: `bi`"
+              value: "Shows info on the bot. Alias: `bi`",
+              inline: true
             },
             {
               name: "Serverinfo",
-              value: "Shows info on the server."
+              value: "Shows info on the server.",
+              inline: true
             },
             {
               name: "Purge",
-              value: "Deletes the number of messages you specify (between 2 and 100) `Requires the 'Manage Messages' permission`. Usage: h.purge **<amount>**"
+              value: "Deletes the number of messages you specify (between 2 and 100) `Requires the 'Manage Messages' permission`. Usage: h.purge **<amount>**",
+              inline: true
             },
             {
               name: "Kick",
-              value: "Kicks a user. `Requires the 'Kick' permission`. Usage: h.kick **<user> [reason]**"
+              value: "Kicks a user. `Requires the 'Kick' permission`. Usage: h.kick **<user> [reason]**",
+              inline: true
             },
             {
               name: "Ban",
-              value: "Bans a member. `Requires the 'Ban' permission`. Usage: h.ban **<user> [reason]**"
+              value: "Bans a member. `Requires the 'Ban' permission`. Usage: h.ban **<user> [reason]**",
+              inline: true
             },
             {
               name: "Eval",
-              value: "Developer only command; runs code that it's prompted with"
+              value: "Developer only command; runs code that it's prompted with",
+              inline: true
             }
           ],
           timestamp: new Date(),
