@@ -271,15 +271,13 @@ if (message.content.startsWith(config.prefix + "purge")) {
 
 //user info
 } if  (message.content.startsWith(config.prefix + "ui")) {
+} if  (message.content.startsWith(config.prefix + "ui")) {
   let status = {
     "online": "<:online:564312732388556800> Online",
     "idle": "<:idle:564312674893299712> Idle",
     "dnd": "<:dnd:564312639753289734> Do Not Disturb",
     "offline": "<:offline:564312891159871498> Offline"
   };
-  let game = {
-    "null": "Nothing"
-  }
 let memberInfo = message.mentions.members.first();
 if(!memberInfo){
 var userinf = new Discord.RichEmbed()
@@ -291,12 +289,14 @@ var userinf = new Discord.RichEmbed()
 .addField("ID:", message.author.id, true)
 .addField('Current Nickname: ', message.author.toString(), true)
 .addField("Current Status: ", status[message.author.presence.status], true)
-.addField("Currently Playing: ", game[message.author.presence.game], true)
+.addField("Currently Playing: ", message.author.presence.game, true)
 .addField("Created On: ", newDate, true)
 .setFooter("Created by Brickman#4669", client.user.avatarURL)
 
 message.channel.send(userinf);
 }else{
+let midate = memberInfo.user.createdAt
+let midateF = midate.toLocaleDateString();
 var userinfoo = new Discord.RichEmbed()
 .setAuthor(memberInfo.displayName, memberInfo.user.avatarURL)
 .setThumbnail(memberInfo.user.avatarURL)
@@ -307,7 +307,7 @@ var userinfoo = new Discord.RichEmbed()
 .addField('Current Nickname: ', memberInfo.toString(), true)
 .addField("Current Status: ", status[memberInfo.user.presence.status], true)
 .addField("Currently Playing: ", memberInfo.user.presence.game, true)
-.addField("Created On: ", game[memberInfo.user.createdAt], true)
+.addField("Created On: ", midateF ,true)
 .setFooter("Created by Brickman#4669", client.user.avatarURL)
 message.channel.send(userinfoo);
 }
@@ -318,9 +318,6 @@ let status = {
 "dnd": "<:dnd:564312639753289734> Do Not Disturb",
 "offline": "<:offline:564312891159871498> Offline"
 };
-let game = {
-  "null": "No game"
-}
 let memberInfo = message.mentions.members.first();
 if(!memberInfo){
 var userinf = new Discord.RichEmbed()
@@ -332,13 +329,14 @@ var userinf = new Discord.RichEmbed()
 .addField("ID:", message.author.id, true)
 .addField('Current Nickname: ', message.author.toString(), true)
 .addField("Current Status: ", status[message.author.presence.status], true)
-.addField("Currently Playing: ", game[message.author.presence.game], true )
+.addField("Currently Playing: ", message.author.presence.game, true )
 .addField("Created On: ", newDate, true)
 .setFooter("Created by Brickman#4669", client.user.avatarURL)
 
 message.channel.send(userinf);
 }else{
-
+let midate = memberInfo.user.createdAt
+let midateF = midate.toLocaleDateString();
 var userinfoo = new Discord.RichEmbed()
 .setAuthor(memberInfo.displayName, memberInfo.user.avatarURL)
 .setThumbnail(memberInfo.user.avatarURL)
@@ -348,10 +346,11 @@ var userinfoo = new Discord.RichEmbed()
 .addField("ID:", memberInfo.id, true)
 .addField("Current Status: ", status[message.author.presence.status], true)
 .addField("Currently Playing: ", message.author.presence.game, true)
-.addField("Created On: ", game[memberInfo.user.createdAt], true)
+.addField("Created On: ", midateF, true)
 .setFooter("Created by Brickman#4669", client.user.avatarURL)
 message.channel.send(userinfoo);
 }
+
     //help
     } if (message.content.startsWith(config.prefix + "help")) {
         message.channel.send({embed: {
