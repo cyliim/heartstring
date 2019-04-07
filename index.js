@@ -357,78 +357,63 @@ if (message.content.startsWith(config.prefix + "purge")) {
           description: "Heartstring Help",
           fields: [{
               name: "Help",
-              value: "Brings up this help menu.",
-              inline: true
+              value: "Brings up this help menu."
             },
             {
               name: "Ping",
-              value: "Shows the latency and API latency of the bot.",
-              inline: true
+              value: "Shows the latency and API latency of the bot."
             },
             {
               name: "Say",
-              value: "Makes the bot say whatever you put after the command. `Requires the 'Manage Messages' permission`. Usage: h.say **<text>**",
-              inline: true
+              value: "Makes the bot say whatever you put after the command. `Requires the 'Manage Messages' permission`. Usage: h.say **<text>**"
             },
             {
               name: "Roll",
-              value: "Rolls a dice. Usage: h.roll **<number>**",
-              inline: true
+              value: "Rolls a dice. Usage: h.roll **<number>**"
             },
             {
               name: "Avatar",
-              value: "Shows your avatar, unless prompted with a mention. Usage: h.avatar **[@user]**",
-              inline: true
+              value: "Shows your avatar, unless prompted with a mention. Usage: h.avatar **[@user]**"
             },
             {
               name: "Uptime",
-              value: "Shows the uptime of the bot",
-              inline: true
+              value: "Shows the uptime of the bot"
             },
             {
               name: "8ball",
-              value: "Acts like a magic 8ball",
-              inline: true
+              value: "Acts like a magic 8ball"
             },
             {
               name: "Suggest",
-              value: "Sends a suggestion to the developer.",
-              inline: true
+              value: "Sends a suggestion to the developer."
             },
             {
               name: "Userinfo",
-              value: "Shows your user info if not prompted with mention, otherwise displays info of the user you have mentioned. Alias: `ui`. Usage: h.userinfo **[user]**",
-              inline: true
+              value: "Shows your user info if not prompted with mention, otherwise displays info of the user you have mentioned. Alias: `ui`. Usage: h.userinfo **[user]**"
             },
             {
               name: "Botinfo",
-              value: "Shows info on the bot. Alias: `bi`",
-              inline: true
+              value: "Shows info on the bot. Alias: `bi`"
             },
             {
               name: "Serverinfo",
-              value: "Shows info on the server.",
-              inline: true
+              value: "Shows info on the server."
             },
             {
               name: "Purge",
-              value: "Deletes the number of messages you specify (between 2 and 100) `Requires the 'Manage Messages' permission`. Usage: h.purge **<amount>**",
-              inline: true
+              value: "Deletes the number of messages you specify (between 2 and 100) `Requires the 'Manage Messages' permission`. Usage: h.purge **<amount>**"
             },
             {
               name: "Kick",
-              value: "Kicks a user. `Requires the 'Kick' permission`. Usage: h.kick **<user> [reason]**",
-              inline: true
+              value: "Kicks a user. `Requires the 'Kick' permission`. Usage: h.kick **<user> [reason]**"
             },
             {
               name: "Ban",
-              value: "Bans a member. `Requires the 'Ban' permission`. Usage: h.ban **<user> [reason]**",
-              inline: true
+              value: "Bans a member. `Requires the 'Ban' permission`. Usage: h.ban **<user> [reason]**"
             },
             {
               name: "Eval",
-              value: "Developer only command; runs code that it's prompted with",
-              inline: true
+              value: "Developer only command; runs code that it's prompted with"
             }
           ],
           timestamp: new Date(),
