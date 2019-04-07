@@ -269,82 +269,88 @@ if (message.content.startsWith(config.prefix + "purge")) {
           }}})
       
 //user info
-         } if  (message.content.startsWith(config.prefix + "ui")) {
-          let status = {
-            "online": "<:online:564312732388556800> Online",
-            "idle": "<:idle:564312674893299712> Idle",
-            "dnd": "<:dnd:564312639753289734> Do Not Disturb",
-            "offline": "<:offline:564312891159871498> Offline"
-          };
-      let memberInfo = message.mentions.members.first();
-      if(!memberInfo){
-      var userinf = new Discord.RichEmbed()
-      .setAuthor(message.author.username, message.author.avatarURL)
-      .setThumbnail(message.author.avatarURL)
-      .setDescription("Guild: " + message.guild)
-      .setColor(0x333333)
-      .addField("Full Username: ", `${message.author.username}#${message.author.discriminator}`, true)
-      .addField("ID:", message.author.id, true)
-      .addField('Current Nickname: ', message.author.toString(), true)
-      .addField("Current Status: ", status[message.author.presence.status], true)
-      .addField("Currently Playing: ", message.author.presence.game, true)
-      .addField("Created On: ", newDate, true)
-      .setFooter("Created by Brickman#4669", client.user.avatarURL)
+} if  (message.content.startsWith(config.prefix + "ui")) {
+  let status = {
+    "online": "<:online:564312732388556800> Online",
+    "idle": "<:idle:564312674893299712> Idle",
+    "dnd": "<:dnd:564312639753289734> Do Not Disturb",
+    "offline": "<:offline:564312891159871498> Offline"
+  };
+  let game = {
+    "null": "No game"
+  }
+let memberInfo = message.mentions.members.first();
+if(!memberInfo){
+var userinf = new Discord.RichEmbed()
+.setAuthor(message.author.username, message.author.avatarURL)
+.setThumbnail(message.author.avatarURL)
+.setDescription("Guild: " + message.guild)
+.setColor(0x333333)
+.addField("Full Username: ", `${message.author.username}#${message.author.discriminator}`, true)
+.addField("ID:", message.author.id, true)
+.addField('Current Nickname: ', message.author.toString(), true)
+.addField("Current Status: ", status[message.author.presence.status], true)
+.addField("Currently Playing: ", game[message.author.presence.game], true)
+.addField("Created On: ", newDate, true)
+.setFooter("Created by Brickman#4669", client.user.avatarURL)
 
-      message.channel.send(userinf);
-      }else{
-  var userinfoo = new Discord.RichEmbed()
-      .setAuthor(memberInfo.displayName, memberInfo.user.avatarURL)
-      .setThumbnail(memberInfo.user.avatarURL)
-      .setDescription("Guild: " + message.guild)
-      .setColor(0x333333)
-      .addField("Full Username:", `${memberInfo.user.username}#${memberInfo.user.discriminator}`, true)
-      .addField("ID:", memberInfo.id, true)
-      .addField('Current Nickname: ', memberInfo.toString(), true)
-      .addField("Current Status: ", status[memberInfo.user.presence.status], true)
-      .addField("Currently Playing: ", memberInfo.user.presence.game, true)
-      .addField("Created On: ", memberInfo.user.createdAt, true)
-      .setFooter("Created by Brickman#4669", client.user.avatarURL)
-      message.channel.send(userinfoo);
-      }
-    } if (message.content.startsWith(config.prefix + "userinfo")) {
-      let status = {
-        "online": "<:online:564312732388556800> Online",
-        "idle": "<:idle:564312674893299712> Idle",
-        "dnd": "<:dnd:564312639753289734> Do Not Disturb",
-        "offline": "<:offline:564312891159871498> Offline"
-      };
-      let memberInfo = message.mentions.members.first();
-      if(!memberInfo){
-      var userinf = new Discord.RichEmbed()
-      .setAuthor(message.author.username, message.author.avatarURL)
-      .setThumbnail(message.author.avatarURL)
-      .setDescription("Guild: " + message.guild)
-      .setColor(0x333333)
-      .addField("Full Username: ", `${message.author.username}#${message.author.discriminator}`, true)
-      .addField("ID:", message.author.id, true)
-      .addField('Current Nickname: ', message.author.toString(), true)
-      .addField("Current Status: ", status[message.author.presence.status], true)
-      .addField("Currently Playing: ", message.author.presence.game, true )
-      .addField("Created On: ", newDate, true)
-      .setFooter("Created by Brickman#4669", client.user.avatarURL)
+message.channel.send(userinf);
+}else{
+var userinfoo = new Discord.RichEmbed()
+.setAuthor(memberInfo.displayName, memberInfo.user.avatarURL)
+.setThumbnail(memberInfo.user.avatarURL)
+.setDescription("Guild: " + message.guild)
+.setColor(0x333333)
+.addField("Full Username:", `${memberInfo.user.username}#${memberInfo.user.discriminator}`, true)
+.addField("ID:", memberInfo.id, true)
+.addField('Current Nickname: ', memberInfo.toString(), true)
+.addField("Current Status: ", status[memberInfo.user.presence.status], true)
+.addField("Currently Playing: ", memberInfo.user.presence.game, true)
+.addField("Created On: ", game[memberInfo.user.createdAt], true)
+.setFooter("Created by Brickman#4669", client.user.avatarURL)
+message.channel.send(userinfoo);
+}
+} if (message.content.startsWith(config.prefix + "userinfo")) {
+let status = {
+"online": "<:online:564312732388556800> Online",
+"idle": "<:idle:564312674893299712> Idle",
+"dnd": "<:dnd:564312639753289734> Do Not Disturb",
+"offline": "<:offline:564312891159871498> Offline"
+};
+let game = {
+  "null": "No game"
+}
+let memberInfo = message.mentions.members.first();
+if(!memberInfo){
+var userinf = new Discord.RichEmbed()
+.setAuthor(message.author.username, message.author.avatarURL)
+.setThumbnail(message.author.avatarURL)
+.setDescription("Guild: " + message.guild)
+.setColor(0x333333)
+.addField("Full Username: ", `${message.author.username}#${message.author.discriminator}`, true)
+.addField("ID:", message.author.id, true)
+.addField('Current Nickname: ', message.author.toString(), true)
+.addField("Current Status: ", status[message.author.presence.status], true)
+.addField("Currently Playing: ", game[message.author.presence.game], true )
+.addField("Created On: ", newDate, true)
+.setFooter("Created by Brickman#4669", client.user.avatarURL)
 
-      message.channel.send(userinf);
-      }else{
+message.channel.send(userinf);
+}else{
 
-  var userinfoo = new Discord.RichEmbed()
-      .setAuthor(memberInfo.displayName, memberInfo.user.avatarURL)
-      .setThumbnail(memberInfo.user.avatarURL)
-      .setDescription("Guild: " + message.guild)
-      .setColor(0x333333)
-      .addField("Full Username:", `${memberInfo.user.username}#${memberInfo.user.discriminator}`, true)
-      .addField("ID:", memberInfo.id, true)
-      .addField("Current Status: ", status[message.author.presence.status], true)
-      .addField("Currently Playing: ", message.author.presence.game, true)
-      .addField("Created On: ", memberInfo.user.createdAt, true)
-      .setFooter("Created by Brickman#4669", client.user.avatarURL)
-      message.channel.send(userinfoo);
-      }
+var userinfoo = new Discord.RichEmbed()
+.setAuthor(memberInfo.displayName, memberInfo.user.avatarURL)
+.setThumbnail(memberInfo.user.avatarURL)
+.setDescription("Guild: " + message.guild)
+.setColor(0x333333)
+.addField("Full Username:", `${memberInfo.user.username}#${memberInfo.user.discriminator}`, true)
+.addField("ID:", memberInfo.id, true)
+.addField("Current Status: ", status[message.author.presence.status], true)
+.addField("Currently Playing: ", message.author.presence.game, true)
+.addField("Created On: ", game[memberInfo.user.createdAt], true)
+.setFooter("Created by Brickman#4669", client.user.avatarURL)
+message.channel.send(userinfoo);
+}
     //help
     } if (message.content.startsWith(config.prefix + "help")) {
         message.channel.send({embed: {
