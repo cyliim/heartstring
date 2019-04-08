@@ -442,7 +442,7 @@ message.channel.send(userinfoo);
             },
             {
               name: "Serverinfo",
-              value: "Shows info on the server. Alias: `si`"
+              value: "Shows info on the server."
             },
             {
               name: "Purge",
@@ -459,7 +459,11 @@ message.channel.send(userinfoo);
             {
               name: "Eval",
               value: "Developer only command; runs code that it's prompted with"
-            }
+            },
+            {
+              name: "Links",
+              value: "[Website](https://brickman.glitch.me/heartstring.html) | [DBL](https://discordbots.org/bot/562151876607344664) | [Github Repo](https://github.com/Brickmanbots/heartstring)"
+            },
           ],
           timestamp: new Date(),
           footer: {
