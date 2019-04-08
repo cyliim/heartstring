@@ -442,7 +442,7 @@ message.channel.send(userinfoo);
             },
             {
               name: "Serverinfo",
-              value: "Shows info on the server. Alias: `si`"
+              value: "Shows info on the server."
             },
             {
               name: "Purge",
