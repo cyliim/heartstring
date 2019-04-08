@@ -1,4 +1,4 @@
-\const Discord = require("discord.js");
+const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json");
 //8ball list
@@ -442,7 +442,7 @@ message.channel.send(userinfoo);
             },
             {
               name: "Serverinfo",
-              value: "Shows info on the server."
+              value: "Shows info on the server. Alias: `si`"
             },
             {
               name: "Purge",
