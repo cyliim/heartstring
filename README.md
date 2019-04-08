@@ -1,2 +1,2 @@
-#Heartstring: A Discord Bot
-Heartstring is a general purpose discord bot. It is meant to supply purpose and assistance to any server it is on.
+# Heartstring: A Discord Bot
+Heartstring is a general purpose bot, filling the roles of a lot of bots on servers. Primary features include kicking and banning commands, purging messages and user info. Heartstring has a friendly developer community, so needing support will never be a problem. Having the bot online 24/7 means that there'll never be a time when Heartstring is unavaliable. Heartstring has a suggestion command so you can help be involved in the development. 
