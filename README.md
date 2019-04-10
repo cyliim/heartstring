@@ -4,6 +4,5 @@ Heartstring is a general purpose bot, filling the roles of a lot of bots on serv
 * Kicking and banning members
 * 24/7 Uptime
 * User and server info
-* Purging messages <br>
-<br>
+* Purging messages <br><br>
 Find a full list of commands [here](https://brickman.glitch.me/heartstring.html)
