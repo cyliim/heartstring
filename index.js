@@ -114,15 +114,21 @@ if (message.content.startsWith(config.prefix + "purge")) {
 
 //avatar
       
-      } if (message.content.startsWith(config.prefix + "avatar")) {
-      if (!message.mentions.users.size) {
-        return message.channel.send(`**Your avatar:** ${message.author.displayAvatarURL}`);
-        }
-        const avatarList = message.mentions.users.map(user => {
-        return `${user.username}\'s avatar: ${user.displayAvatarURL}`;
-        });
-        message.channel.send(avatarList);
-
+} if (message.content.startsWith(config.prefix + 'avatar')) {
+  if (!message.mentions.users.size) {
+    const avatarAuthor = new Discord.RichEmbed()
+        .setColor(0x333333)
+        .setAuthor(message.author.username)
+        .setImage(message.author.avatarURL);
+    message.channel.send(avatarAuthor);
+} else {
+  const user = message.mentions.users.first() 
+  const avatarEmbed = new Discord.RichEmbed()
+      .setColor(0x333333)
+      .setAuthor(user.username)
+      .setImage(user.avatarURL);
+  message.channel.send(avatarEmbed);
+}
 //eval
       
     } if (message.content.startsWith(config.prefix + "eval")) {
@@ -310,7 +316,6 @@ if (message.content.startsWith(config.prefix + "purge")) {
 
 //user info
 } if  (message.content.startsWith(config.prefix + "ui")) {
-} if  (message.content.startsWith(config.prefix + "ui")) {
   let status = {
     "online": "<:online:564312732388556800> Online",
     "idle": "<:idle:564312674893299712> Idle",
@@ -389,6 +394,10 @@ var userinfoo = new Discord.RichEmbed()
 .setFooter("Created by Brickman#4669", client.user.avatarURL)
 message.channel.send(userinfoo);
 }
+
+//warn
+
+
 
     //help
     } if (message.content.startsWith(config.prefix + "help")) {
