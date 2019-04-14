@@ -488,5 +488,4 @@ message.channel.send("Developer only command; runs code it's prompted with")
       
         } 
       });
-  }});
   client.login(process.env.token);
