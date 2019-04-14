@@ -242,7 +242,7 @@ if (message.content.startsWith(config.prefix + "purge")) {
           .get(randomsubs)
           .query({ limit: 800 });
       const allowed = message.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
-      if (!allowed.length) return message.channel.send('It seems we are out of fresh memes!, Try again later.');
+      if (!allowed.length) return message.channel.send('Sorry, this post seems to be NSFW. Heartstring is not a NSFW bot');
       const randomnumber = Math.floor(Math.random() * allowed.length)
       const memeembed = new Discord.RichEmbed()
       .setColor(0x333333)
@@ -263,7 +263,7 @@ if (message.content.startsWith(config.prefix + "purge")) {
           .get(sub)
           .query({ limit: 800 });
       const allowed = message.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
-      if (!allowed.length) return message.channel.send('It seems we are out of fresh memes!, Try again later.');
+      if (!allowed.length) return message.channel.send('Sorry, this post seems to be NSFW. Heartstring is not a NSFW bot');
       const randomnumber = Math.floor(Math.random() * allowed.length)
       const subembed = new Discord.RichEmbed()
       .setColor(0x333333)
@@ -297,11 +297,6 @@ if (message.content.startsWith(config.prefix + "purge")) {
               inline: true
           },
           {
-            name: "Version",
-            value: "Alpha InDev",
-              inline: true
-          },
-          {
             name: "discord.js Version",
             value: Discord.version,
               inline: true
@@ -331,18 +326,8 @@ if (message.content.startsWith(config.prefix + "purge")) {
               inline: true
           },
           {
-            name: "Version",
-            value: "Alpha InDev",
-              inline: true
-          },
-          {
             name: "discord.js Version",
             value: Discord.version,
-              inline: true
-          },
-          {
-            name: "Commands:",
-            value: "15 Commands",
               inline: true
           },
         ],
@@ -439,38 +424,81 @@ message.channel.send(userinfoo);
 
 
     //help
-   } if (message.content === config.prefix + "help serverinfo") {
-message.channel.send("```Shows info on the server \nAlias: si```")
-} if (message.content === config.prefix + "help botinfo") {
-message.channel.send("```Shows info on the bot \nAlias: bi```")
-} if (message.content === config.prefix + "help userinfo") {
-message.channel.send("```Shows your user info if not prompted with a mention, otherwise displays info of the user you have mentioned. \nAlias: ui \nUsage: h.userinfo [@user]```")
-} if (message.content === config.prefix + "help kick") {
-message.channel.send("```Kicks a user. \nRequires the 'Kick' permission \nUsage: h.kick <@user> [reason]```")
-} if (message.content === config.prefix + "help ban") {
-message.channel.send("```Bans a user. \nRequires the 'Ban' permission \nUsage: h.ban <@user> [reason]```")
-} if (message.content === config.prefix + "help purge") {
-message.channel.send("```Deletes the number of messages you specify (between 2 and 100) \nRequires the 'Manage Messages' permission \nUsage: h.purge <amount 2-100>```")
-} if (message.content === config.prefix + "help 8ball") {
-message.channel.send("```Acts like a magic 8ball.```")
-} if (message.content === config.prefix + "help meme") {
-message.channel.send("```Sends a random meme from reddit```")
-} if (message.content === config.prefix + "help reddit") {
-message.channel.send("```Sends a random image from reddit. \nDoesn't work with gifs, text or videos \nUsage: h.reddit <subreddit>```")
-} if (message.content === config.prefix + "help roll") {
-message.channel.send("```Rolls a dice. \nUsage: h.roll <number>```")
-} if (message.content === config.prefix + "help help") {
-message.channel.send("```Shows the help menu.```")
-} if (message.content === config.prefix + "help ping") {
-message.channel.send("```Shows the latency and API latency of the bot.```")
-} if (message.content === config.prefix + "help say") {
-message.channel.send("```Makes the bot say whatever you put after the command. \nRequires the `Manage Message` permission. \nUsage: h.say <text>```")
-} if (message.content === config.prefix + "help avatar") {
-message.channel.send("```Shows your avatar, unless prompted with a mention. \nUsage: h.avatar [@user]```")
-} if (message.content === config.prefix + "help uptime") {
-message.channel.send("```Shows the uptime of the bot in Days, Hours and Minutes.```")
-} if (message.content === config.prefix + "help eval") {
-message.channel.send("```Developer only command; runs code it's prompted with```")
+  } if (message.content === config.prefix + "help serverinfo") {
+    var serverinfo = new Discord.RichEmbed()
+    .setColor(0x333333)
+    .addField("Shows info on the server", "Alias: si")
+    message.channel.send(serverinfo)
+    } if (message.content === config.prefix + "help botinfo") {
+      var botinfo = new Discord.RichEmbed()
+      .setColor(0x333333)
+      .addField("Shows info on the bot", "Alias: bi")
+    message.channel.send(botinfo)
+    } if (message.content === config.prefix + "help userinfo") {
+      var userinfo = new Discord.RichEmbed()
+      .setColor(0x333333)
+      .addField("Shows your user info if not prompted with a mention, otherwise displays info of the user you have mentioned.", "Alias: ui \nUsage: h.userinfo [@user]")
+    message.channel.send(userinfo)
+    } if (message.content === config.prefix + "help kick") {
+      var kick = new Discord.RichEmbed()
+      .setColor(0x333333)
+      .addField("Kicks a user.", "Requires the 'Kick' permission \nUsage: h.kick <@user> [reason]")
+    message.channel.send(kick)
+    } if (message.content === config.prefix + "help ban") {
+      var ban = new Discord.RichEmbed()
+      .setColor(0x333333)
+      .addField("Bans a user.", "Requires the 'Ban' permission \nUsage: h.ban <@user> [reason]")
+    message.channel.send(ban)
+    } if (message.content === config.prefix + "help purge") {
+      var purge = new Discord.RichEmbed()
+      .setColor(0x333333)
+      .addField("Deletes the number of messages you specify (between 2 and 100)", "Requires the 'Manage Messages' permission \nUsage: h.purge <amount 2-100>")
+    message.channel.send(purge)
+    } if (message.content === config.prefix + "help 8ball") {
+      var eightball = new Discord.RichEmbed()
+      .setColor(0x333333)
+      .addField("Acts like a magic 8ball.", "Usage: h.8ball [question]")
+    message.channel.send(eightball)
+    } if (message.content === config.prefix + "help meme") {
+      var meme = new Discord.RichEmbed()
+      .setColor(0x333333)
+      .addField("Sends a random meme", "From reddit")
+    message.channel.send(meme)
+    } if (message.content === config.prefix + "help reddit") {
+      var reddit = new Discord.RichEmbed()
+      .setColor(0x333333)
+      .addField("Sends a random image from reddit.", "Doesn't work with gifs, text or videos. \nUsage: h.reddit <subreddit>")
+    message.channel.send(reddit)
+    } if (message.content === config.prefix + "help roll") {
+      var roll = new Discord.RichEmbed()
+      .setColor(0x333333)
+      .addField("Rolls a dice.", "Usage: h.roll <number>")
+    message.channel.send(roll)
+    } if (message.content === config.prefix + "help ping") {
+      var ping = new Discord.RichEmbed()
+      .setColor(0x333333)
+      .addField("Pings the bot", "Shows Latency and API Latency")
+    message.channel.send(ping)
+    } if (message.content === config.prefix + "help say") {
+      var helpsay = new Discord.RichEmbed()
+      .setColor(0x333333)
+      .addField("Makes the bot say whatever you put after the command.", "Requires the `Manage Message` permission. \nUsage: h.say <text>")
+    message.channel.send(helpsay)
+    } if (message.content === config.prefix + "help avatar") {
+      var avatar = new Discord.RichEmbed()
+      .setColor(0x333333)
+      .addField("Shows your avatar, unless prompted with a mention.", "Usage: h.avatar [@user]")
+    message.channel.send(avatar)
+    } if (message.content === config.prefix + "help uptime") {
+      var uptime = new Discord.RichEmbed()
+      .setColor(0x333333)
+      .addField("Shows the uptime of the bot in Days, Hours and Minutes.")
+    message.channel.send(uptime)
+    } if (message.content === config.prefix + "help eval") {
+      var evalembed = new Discord.RichEmbed()
+      .setColor(0x333333)
+      .addField("Developer only command; runs code it's prompted with")
+    message.channel.send(evalembed)
     //help
     } if (message.content === config.prefix + "help") {
       var help = new Discord.RichEmbed()
