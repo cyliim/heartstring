@@ -456,7 +456,7 @@ message.channel.send("Acts like a magic 8ball.")
 } if (message.content === config.prefix + "help meme") {
 message.channel.send("Sends a random meme from reddit")
 } if (message.content === config.prefix + "help reddit") {
-message.channel.send("Sends a random image from reddit. \nDoesn't work with gifs, text or videos")
+message.channel.send("Sends a random image from reddit. \nDoesn't work with gifs, text or videos \nUsage: h.reddit <subreddit>")
 } if (message.content === config.prefix + "help roll") {
 message.channel.send("Rolls a dice. \nUsage: h.roll <number>")
 } if (message.content === config.prefix + "help help") {
