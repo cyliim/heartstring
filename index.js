@@ -439,85 +439,53 @@ message.channel.send(userinfoo);
 
 
     //help
-    } if (message.content.startsWith(config.prefix + "help")) {
-        message.channel.send({embed: {
-          color: 0x333333,
-          author: {
-            name: "Heartstring",
-            icon_url: client.user.avatarURL
-          },
-          title: "Help Menu",
-          description: "Heartstring Help",
-          fields: [{
-              name: "Help",
-              value: "Brings up this help menu."
-            },
-            {
-              name: "Ping",
-              value: "Shows the latency and API latency of the bot."
-            },
-            {
-              name: "Say",
-              value: "Makes the bot say whatever you put after the command. `Requires the 'Manage Messages' permission`. Usage: h.say **<text>**"
-            },
-            {
-              name: "Roll",
-              value: "Rolls a dice. Usage: h.roll **<number>**"
-            },
-            {
-              name: "Avatar",
-              value: "Shows your avatar, unless prompted with a mention. Usage: h.avatar **[@user]**"
-            },
-            {
-              name: "Uptime",
-              value: "Shows the uptime of the bot"
-            },
-            {
-              name: "8ball",
-              value: "Acts like a magic 8ball"
-            },
-            {
-              name: "Suggest",
-              value: "Sends a suggestion to the developer."
-            },
-            {
-              name: "Userinfo",
-              value: "Shows your user info if not prompted with mention, otherwise displays info of the user you have mentioned. Alias: `ui`. Usage: h.userinfo **[user]**"
-            },
-            {
-              name: "Botinfo",
-              value: "Shows info on the bot. Alias: `bi`"
-            },
-            {
-              name: "Serverinfo",
-              value: "Shows info on the server. Alias: `si`"
-            },
-            {
-              name: "Purge",
-              value: "Deletes the number of messages you specify (between 2 and 100) `Requires the 'Manage Messages' permission`. Usage: h.purge **<amount>**"
-            },
-            {
-              name: "Kick",
-              value: "Kicks a user. `Requires the 'Kick' permission`. Usage: h.kick **<user> [reason]**"
-            },
-            {
-              name: "Ban",
-              value: "Bans a member. `Requires the 'Ban' permission`. Usage: h.ban **<user> [reason]**"
-            },
-            {
-              name: "Eval",
-              value: "Developer only command; runs code that it's prompted with"
-            },
-            {
-              name: "Links",
-              value: "[Website](https://brickman.glitch.me/heartstring.html) | [DBL](https://discordbots.org/bot/562151876607344664) | [Github Repo](https://github.com/Brickmanbots/heartstring)"
-            },
-          ],
-          timestamp: new Date(),
-          footer: {
-            icon_url: client.user.avatarURL,
-            text: "Created by Brickman#4669"
-          }
+   } if (message.content === config.prefix + "help serverinfo") {
+message.channel.send("Shows info on the server \nAlias: si")
+} if (message.content === config.prefix + "help botinfo") {
+message.channel.send("Shows info on the bot \nAlias: bi")
+} if (message.content === config.prefix + "help userinfo") {
+message.channel.send("Shows your user info if not prompted with a mention, otherwise displays info of the user you have mentioned. \nAlias: ui \nUsage: h.userinfo [@user]")
+} if (message.content === config.prefix + "help kick") {
+message.channel.send("Kicks a user. \nRequires the 'Kick' permission \nUsage: h.kick <@user> [reason]")
+} if (message.content === config.prefix + "help ban") {
+message.channel.send("Bans a user. \nRequires the 'Ban' permission \nUsage: h.ban <@user> [reason]")
+} if (message.content === config.prefix + "help purge") {
+message.channel.send("Deletes the number of messages you specify (between 2 and 100) \nRequires the 'Manage Messages' permission \nUsage: h.purge <amount 2-100>")
+} if (message.content === config.prefix + "help 8ball") {
+message.channel.send("Acts like a magic 8ball.")
+} if (message.content === config.prefix + "help meme") {
+message.channel.send("Sends a random meme from reddit")
+} if (message.content === config.prefix + "help reddit") {
+message.channel.send("Sends a random image from reddit. \nDoesn't work with gifs, text or videos")
+} if (message.content === config.prefix + "help roll") {
+message.channel.send("Rolls a dice. \nUsage: h.roll <number>")
+} if (message.content === config.prefix + "help help") {
+message.channel.send("Shows the help menu.")
+} if (message.content === config.prefix + "help ping") {
+message.channel.send("Shows the latency and API latency of the bot.")
+} if (message.content === config.prefix + "help say") {
+message.channel.send("Makes the bot say whatever you put after the command. \nRequires the `Manage Message` permission. \nUsage: h.say <text>")
+} if (message.content === config.prefix + "help avatar") {
+message.channel.send("Shows your avatar, unless prompted with a mention. \nUsage: h.avatar [@user]")
+} if (message.content === config.prefix + "help uptime") {
+message.channel.send("Shows the uptime of the bot in Days, Hours and Minutes.")
+} if (message.content === config.prefix + "help eval") {
+message.channel.send("Developer only command; runs code it's prompted with")
+    //help
+    } if (message.content === config.prefix + "help") {
+      var help = new Discord.RichEmbed()
+.setAuthor("Heartstring", client.user.avatarURL)
+.setDescription("Use `help <command>` for more info on each command")
+.setColor(0x333333)
+.addField("Info Commands", "``` userinfo \n botinfo \n serverinfo```", true)
+.addField("Moderation Commands", "``` kick \n ban \n purge```", true)
+.addField("Fun Commands", "``` 8ball \n meme \n reddit \n roll```", true)
+.addField("General Commands", "``` help \n ping \n say \n avatar \n uptime```", true)
+.addField("Developer", "``` eval```", true)
+.addField("Links", "[Website](https://brickman.glitch.me/heartstring.html) | [DBL](https://discordbots.org/bot/562151876607344664) | [Github Repo](https://github.com/Brickmanbots/heartstring)")
+.setFooter("Created by Brickman#4669", client.user.avatarURL)
+      message.channel.send(help)
+      
         } 
       });
   }});
