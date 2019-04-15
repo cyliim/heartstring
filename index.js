@@ -426,11 +426,6 @@ message.channel.send(userinfoo);
 
 
     //help
-    } if (message.content === config.prefix + "help image") {
-    var serverinfo = new Discord.RichEmbed()
-    .setColor(0x333333)
-    .addField("Sends an image from Google Images", "Usage: h.search <search term>")
-    message.channel.send(serverinfo)
   } if (message.content === config.prefix + "help serverinfo") {
     var serverinfo = new Discord.RichEmbed()
     .setColor(0x333333)
@@ -514,7 +509,7 @@ message.channel.send(userinfoo);
 .setColor(0x333333)
 .addField("Info Commands", "``` userinfo \n botinfo \n serverinfo```", true)
 .addField("Moderation Commands", "``` kick \n ban \n purge```", true)
-.addField("Fun Commands", "``` 8ball \n meme \n reddit \n roll \n image```", true)
+.addField("Fun Commands", "``` 8ball \n meme \n reddit \n roll```", true)
 .addField("General Commands", "``` help \n ping \n say \n avatar \n uptime```", true)
 .addField("Developer", "``` eval```", true)
 .addField("Links", "[Website](https://brickman.glitch.me/heartstring.html) | [DBL](https://discordbots.org/bot/562151876607344664) | [Github Repo](https://github.com/Brickmanbots/heartstring)")
