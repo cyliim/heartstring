@@ -154,7 +154,7 @@ if (message.content.startsWith(config.prefix + "purge")) {
       }
     
   } if (message.content.startsWith(config.prefix + "image")) {
-const google = new GoogleImages("009072959933037205376:62ejxiytd_8", "AIzaSyB76EcZmjjrPbc1wmq8nP3fju7vTMNsWxU");
+const google = new GoogleImages("process.env.csekey", "process.env.apikey");
 var search = google.search(args.join(" ")).then(function(images) {
   var image = new Discord.RichEmbed()
   .setColor(0x333333)
