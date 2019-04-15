@@ -2,7 +2,6 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json");
 const snekfetch = require("snekfetch")
-const GoogleImages = require("google-images")
 //8ball list
 var ball =["It is certain.", "It is decidedly so.", "Without a doubt.", "Yes - definitely.", "You may rely on it.", "As I see it, yes.", "Most likely.", "Outlook good.", "Yes.", "Signs point to yes.", "Reply hazy, try again.", "Ask again later.", "Better not tell you now.", "Cannot predict now.", "Concentrate and ask again.", " Don't count on it.", "My reply is no.", "My sources say no.", "Outlook not so good.", "Very doubtful."];
 client.on("ready", () => {
@@ -153,16 +152,7 @@ if (message.content.startsWith(config.prefix + "purge")) {
         message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``)
       }
     
-  } if (message.content.startsWith(config.prefix + "image")) {
-const google = new GoogleImages("process.env.csekey", "process.env.apikey");
-var search = google.search(args.join(" ")).then(function(images) {
-  var image = new Discord.RichEmbed()
-  .setColor(0x333333)
-  .setImage(images[Math.floor(Math.random() * images.length)].url)
-  .setDescription("If there is no image shown, it's because no image could be found within the search term.")
-  .setAuthor(args, images[Math.floor(Math.random() * images.length)].url)
-  message.channel.send(image)
-  });
+ 
 
         
 //serverinfo
