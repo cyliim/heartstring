@@ -437,27 +437,27 @@ message.channel.send(userinfoo);
     } if (message.content === config.prefix + "help userinfo") {
       var userinfo = new Discord.RichEmbed()
       .setColor(0x333333)
-      .addField("Shows your user info if not prompted with a mention, otherwise displays info of the user you have mentioned.", "Alias: ui \nUsage: h.userinfo [@user]")
+      .addField("Shows your user info if not prompted with a mention, otherwise displays info of the user you have mentioned.", "Alias: ui \nUsage: h.userinfo [@user] \nExample: h.userinfo @Brickman")
     message.channel.send(userinfo)
     } if (message.content === config.prefix + "help kick") {
       var kick = new Discord.RichEmbed()
       .setColor(0x333333)
-      .addField("Kicks a user.", "Requires the 'Kick' permission \nUsage: h.kick <@user> [reason]")
+      .addField("Kicks a user.", "Requires the 'Kick' permission \nUsage: h.kick <@user> [reason] \n Example: h.kick @Brickman Get out!")
     message.channel.send(kick)
     } if (message.content === config.prefix + "help ban") {
       var ban = new Discord.RichEmbed()
       .setColor(0x333333)
-      .addField("Bans a user.", "Requires the 'Ban' permission \nUsage: h.ban <@user> [reason]")
+      .addField("Bans a user.", "Requires the 'Ban' permission \nUsage: h.ban <@user> [reason] \nExample: h.ban @Brickman Get out!")
     message.channel.send(ban)
     } if (message.content === config.prefix + "help purge") {
       var purge = new Discord.RichEmbed()
       .setColor(0x333333)
-      .addField("Deletes the number of messages you specify (between 2 and 100)", "Requires the 'Manage Messages' permission \nUsage: h.purge <amount 2-100>")
+      .addField("Deletes the number of messages you specify (between 2 and 100)", "Requires the 'Manage Messages' permission \nUsage: h.purge <amount 2-100> \nExample: h.purge 20")
     message.channel.send(purge)
     } if (message.content === config.prefix + "help 8ball") {
       var eightball = new Discord.RichEmbed()
       .setColor(0x333333)
-      .addField("Acts like a magic 8ball.", "Usage: h.8ball [question]")
+      .addField("Acts like a magic 8ball.", "Usage: h.8ball [question] \nExample: h.8ball Is Heartstring the best bot?")
     message.channel.send(eightball)
     } if (message.content === config.prefix + "help meme") {
       var meme = new Discord.RichEmbed()
@@ -467,12 +467,12 @@ message.channel.send(userinfoo);
     } if (message.content === config.prefix + "help reddit") {
       var reddit = new Discord.RichEmbed()
       .setColor(0x333333)
-      .addField("Sends a random image from reddit.", "Doesn't work with gifs, text or videos. \nUsage: h.reddit <subreddit>")
+      .addField("Sends a random image from reddit.", "Doesn't work with gifs, text or videos. \nUsage: h.reddit <subreddit> \nExample: h.reddit pics")
     message.channel.send(reddit)
     } if (message.content === config.prefix + "help roll") {
       var roll = new Discord.RichEmbed()
       .setColor(0x333333)
-      .addField("Rolls a dice.", "Usage: h.roll <number>")
+      .addField("Rolls a dice.", "Usage: h.roll <number> \nExample: h.roll 12")
     message.channel.send(roll)
     } if (message.content === config.prefix + "help ping") {
       var ping = new Discord.RichEmbed()
@@ -482,12 +482,12 @@ message.channel.send(userinfoo);
     } if (message.content === config.prefix + "help say") {
       var helpsay = new Discord.RichEmbed()
       .setColor(0x333333)
-      .addField("Makes the bot say whatever you put after the command.", "Requires the `Manage Message` permission. \nUsage: h.say <text>")
+      .addField("Makes the bot say whatever you put after the command.", "Requires the `Manage Message` permission. \nUsage: h.say <text> \nExample: h.say I am the best!")
     message.channel.send(helpsay)
     } if (message.content === config.prefix + "help avatar") {
       var avatar = new Discord.RichEmbed()
       .setColor(0x333333)
-      .addField("Shows your avatar, unless prompted with a mention.", "Usage: h.avatar [@user]")
+      .addField("Shows your avatar, unless prompted with a mention.", "Usage: h.avatar [@user] \nExample: h.avatar @Brickman")
     message.channel.send(avatar)
     } if (message.content === config.prefix + "help uptime") {
       var uptime = new Discord.RichEmbed()
