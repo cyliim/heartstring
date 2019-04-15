@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json");
 const snekfetch = require("snekfetch")
+const GoogleImages = require("google-images")
 //8ball list
 var ball =["It is certain.", "It is decidedly so.", "Without a doubt.", "Yes - definitely.", "You may rely on it.", "As I see it, yes.", "Most likely.", "Outlook good.", "Yes.", "Signs point to yes.", "Reply hazy, try again.", "Ask again later.", "Better not tell you now.", "Cannot predict now.", "Concentrate and ask again.", " Don't count on it.", "My reply is no.", "My sources say no.", "Outlook not so good.", "Very doubtful."];
 client.on("ready", () => {
@@ -152,7 +153,18 @@ if (message.content.startsWith(config.prefix + "purge")) {
         message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``)
       }
     
+  } if (message.content.startsWith(config.prefix + "image")) {
+const google = new GoogleImages("009072959933037205376:62ejxiytd_8", "AIzaSyB76EcZmjjrPbc1wmq8nP3fju7vTMNsWxU");
+var search = google.search(args.join(" ")).then(function(images) {
+  var image = new Discord.RichEmbed()
+  .setColor(0x333333)
+  .setImage(images[Math.floor(Math.random() * images.length)].url)
+  .setDescription("If there is no image shown, it's because no image could be found within the search term.")
+  .setAuthor(args, images[Math.floor(Math.random() * images.length)].url)
+  message.channel.send(image)
+  });
 
+        
 //serverinfo
 
     } if (message.content.startsWith(config.prefix + "serverinfo")) {
@@ -424,6 +436,11 @@ message.channel.send(userinfoo);
 
 
     //help
+    } if (message.content === config.prefix + "help image") {
+    var serverinfo = new Discord.RichEmbed()
+    .setColor(0x333333)
+    .addField("Sends an image from Google Images", "Usage: h.search <search term>")
+    message.channel.send(serverinfo)
   } if (message.content === config.prefix + "help serverinfo") {
     var serverinfo = new Discord.RichEmbed()
     .setColor(0x333333)
@@ -507,7 +524,7 @@ message.channel.send(userinfoo);
 .setColor(0x333333)
 .addField("Info Commands", "``` userinfo \n botinfo \n serverinfo```", true)
 .addField("Moderation Commands", "``` kick \n ban \n purge```", true)
-.addField("Fun Commands", "``` 8ball \n meme \n reddit \n roll```", true)
+.addField("Fun Commands", "``` 8ball \n meme \n reddit \n roll \n image```", true)
 .addField("General Commands", "``` help \n ping \n say \n avatar \n uptime```", true)
 .addField("Developer", "``` eval```", true)
 .addField("Links", "[Website](https://brickman.glitch.me/heartstring.html) | [DBL](https://discordbots.org/bot/562151876607344664) | [Github Repo](https://github.com/Brickmanbots/heartstring)")
