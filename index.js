@@ -365,6 +365,7 @@ var userinf = new Discord.RichEmbed()
 .addField('Current Nickname: ', message.author.toString(), true)
 .addField("Current Status: ", status[message.author.presence.status], true)
 .addField("Currently Playing: ", message.author.presence.game || "Nothing", true)
+.addField("Joined On: ", newJoined, true)
 .addField("Account Type: ", bot[message.author.bot], true)
 .addField("Created On: ", newDate, true)
 .setFooter("Created by Brickman#4669", client.user.avatarURL)
@@ -373,6 +374,8 @@ message.channel.send(userinf);
 }else{
 let midate = memberInfo.user.createdAt
 let midateF = midate.toLocaleDateString();
+let mijoined = memberInfo.joinedAt
+let mijoinedF = mijoined.toLocaleDateString();
 var userinfoo = new Discord.RichEmbed()
 .setAuthor(memberInfo.displayName, memberInfo.user.avatarURL)
 .setThumbnail(memberInfo.user.avatarURL)
@@ -383,6 +386,7 @@ var userinfoo = new Discord.RichEmbed()
 .addField('Current Nickname: ', memberInfo.toString(), true)
 .addField("Current Status: ", status[memberInfo.user.presence.status], true)
 .addField("Currently Playing: ", memberInfo.user.presence.game || "Nothing", true)
+.addField("Joined On: ", mijoinedF, true)
 .addField("Account Type: ", bot[memberInfo.user.bot], true)
 .addField("Created On: ", midateF ,true)
 .setFooter("Created by Brickman#4669", client.user.avatarURL)
@@ -412,6 +416,7 @@ var userinf = new Discord.RichEmbed()
 .addField('Current Nickname: ', message.author.toString(), true)
 .addField("Current Status: ", status[message.author.presence.status], true)
 .addField("Currently Playing: ", message.author.presence.game || "Nothing", true )
+.addField("Joined On: ", newJoined, true)
 .addField("Account Type: ", bot[message.author.bot], true)
 .addField("Created On: ", newDate, true)
 .setFooter("Created by Brickman#4669", client.user.avatarURL)
@@ -420,6 +425,8 @@ message.channel.send(userinf);
 }else{
 let midate = memberInfo.user.createdAt
 let midateF = midate.toLocaleDateString();
+let mijoined = memberInfo.joinedAt
+let mijoinedF = mijoined.toLocaleDateString();
 var userinfoo = new Discord.RichEmbed()
 .setAuthor(memberInfo.displayName, memberInfo.user.avatarURL)
 .setThumbnail(memberInfo.user.avatarURL)
@@ -429,6 +436,7 @@ var userinfoo = new Discord.RichEmbed()
 .addField("ID:", memberInfo.id, true)
 .addField("Current Status: ", status[message.author.presence.status], true)
 .addField("Currently Playing: ", message.author.presence.game || "Nothing", true)
+.addField("Joined On: ", mijoinedF, true)
 .addField("Account Type: ", bot[memberInfo.user.bot], true)
 .addField("Created On: ", midateF, true)
 .setFooter("Created by Brickman#4669", client.user.avatarURL)
