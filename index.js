@@ -342,11 +342,16 @@ if (message.content.startsWith(config.prefix + "purge")) {
 
 //user info
 } if  (message.content.startsWith(config.prefix + "ui")) {
+  let bot = {
+    "true": "<:bot:567460806766362634> Bot",
+    "false": "<:user:567460858779664618> User"
+  }
   let status = {
     "online": "<:online:564312732388556800> Online",
     "idle": "<:idle:564312674893299712> Idle",
     "dnd": "<:dnd:564312639753289734> Do Not Disturb",
-    "offline": "<:offline:564312891159871498> Offline"
+    "offline": "<:offline:564312891159871498> Offline",
+    "streaming": "<:streaming:567461197612449792> Streaming"
   };
 let memberInfo = message.mentions.members.first();
 if(!memberInfo){
@@ -360,6 +365,7 @@ var userinf = new Discord.RichEmbed()
 .addField('Current Nickname: ', message.author.toString(), true)
 .addField("Current Status: ", status[message.author.presence.status], true)
 .addField("Currently Playing: ", message.author.presence.game || "Nothing", true)
+.addField("Account Type: ", bot[message.author.bot], true)
 .addField("Created On: ", newDate, true)
 .setFooter("Created by Brickman#4669", client.user.avatarURL)
 
@@ -377,16 +383,22 @@ var userinfoo = new Discord.RichEmbed()
 .addField('Current Nickname: ', memberInfo.toString(), true)
 .addField("Current Status: ", status[memberInfo.user.presence.status], true)
 .addField("Currently Playing: ", memberInfo.user.presence.game || "Nothing", true)
+.addField("Account Type: ", bot[memberInfo.user.bot], true)
 .addField("Created On: ", midateF ,true)
 .setFooter("Created by Brickman#4669", client.user.avatarURL)
 message.channel.send(userinfoo);
 }
 } if (message.content.startsWith(config.prefix + "userinfo")) {
+  let bot = {
+    "true": "Bot",
+    "false": "User"
+  }
 let status = {
 "online": "<:online:564312732388556800> Online",
 "idle": "<:idle:564312674893299712> Idle",
 "dnd": "<:dnd:564312639753289734> Do Not Disturb",
-"offline": "<:offline:564312891159871498> Offline"
+"offline": "<:offline:564312891159871498> Offline",
+"streaming": "<:streaming:567461197612449792> Streaming"
 };
 let memberInfo = message.mentions.members.first();
 if(!memberInfo){
@@ -400,6 +412,7 @@ var userinf = new Discord.RichEmbed()
 .addField('Current Nickname: ', message.author.toString(), true)
 .addField("Current Status: ", status[message.author.presence.status], true)
 .addField("Currently Playing: ", message.author.presence.game || "Nothing", true )
+.addField("Account Type: ", bot[message.author.bot], true)
 .addField("Created On: ", newDate, true)
 .setFooter("Created by Brickman#4669", client.user.avatarURL)
 
@@ -416,11 +429,11 @@ var userinfoo = new Discord.RichEmbed()
 .addField("ID:", memberInfo.id, true)
 .addField("Current Status: ", status[message.author.presence.status], true)
 .addField("Currently Playing: ", message.author.presence.game || "Nothing", true)
+.addField("Account Type: ", bot[memberInfo.user.bot], true)
 .addField("Created On: ", midateF, true)
 .setFooter("Created by Brickman#4669", client.user.avatarURL)
 message.channel.send(userinfoo);
 }
-
 //warn
 
 
