@@ -104,6 +104,7 @@ message.channel.send("Thank you for your suggestion")
      }
       //purge
 if (message.content.startsWith(config.prefix + "purge")) {
+  if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You do not have permission for this!")
   const deleteCount = parseInt(args[0], 10);
   if(!deleteCount || deleteCount < 2 || deleteCount > 100)
     return message.reply("Please provide a number between 2 and 100 for the number of messages to delete");
@@ -113,8 +114,7 @@ if (message.content.startsWith(config.prefix + "purge")) {
 
 
 
-//avatar
-      
+//avatar   
 } if (message.content.startsWith(config.prefix + 'avatar')) {
   if (!message.mentions.users.size) {
     const avatarAuthor = new Discord.RichEmbed()
@@ -436,12 +436,12 @@ message.channel.send(userinfoo);
 }
 //role assign
 } if (message.content.startsWith(config.prefix + "addrole")) {
-  if (!message.author.hasPermission(MANAGE_ROLES)) return message.channel.send("You do not have permission for this!")
+  if (!message.author.hasPermission("MANAGE_ROLES")) 
   let userToModify = message.mentions.members.first();
   let roleToAdd = message.mentions.roles.first();
   userToModify.addRole(roleToAdd);  
 } if (message.content.startsWith(config.prefix + "removerole")) {
-  if (!message.author.hasPermission(MANAGE_ROLES)) return message.channel.send("You do not have permission for this!")
+  if (!message.author.hasPermission("MANAGE_ROLES")) return message.channel.send("You do not have permission for this!")
   let userToRemove = message.mentions.members.first();
   let roleToRemove = message.mentions.roles.first();
 userToRemove.removeRole(roleToRemove); 
