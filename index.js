@@ -436,23 +436,23 @@ message.channel.send(userinfoo);
 }
 //role assign
 } if (message.content.startsWith(config.prefix + "addrole")) {
-  if (!message.author.hasPermission(MANAGE_ROLES))
+  if (!message.author.hasPermission(MANAGE_ROLES)) return message.channel.send("You do not have permission for this!")
   let userToModify = message.mentions.members.first();
   let roleToAdd = message.mentions.roles.first();
   userToModify.addRole(roleToAdd);  
 } if (message.content.startsWith(config.prefix + "removerole")) {
-  if (!message.author.hasPermission(MANAGE_ROLES))
+  if (!message.author.hasPermission(MANAGE_ROLES)) return message.channel.send("You do not have permission for this!")
   let userToRemove = message.mentions.members.first();
   let roleToRemove = message.mentions.roles.first();
 userToRemove.removeRole(roleToRemove); 
 
     //help
-  } if (message.content === config.prefix + "help roleremove") {
+  } if (message.content === config.prefix + "help addrole") {
     var roleremoveembed = new Discord.RichEmbed()
     .setColor(0x333333)
     .addField("Adds a role to the desired member", "Requires the 'Manage Roles' permission \nUsage: h.addrole @Brickman @Owner")
     message.channel.send(roleremoveembed)
-  } if (message.content === config.prefix + "help roleremove") {
+  } if (message.content === config.prefix + "help removerole") {
     var roleaddembed = new Discord.RichEmbed()
     .setColor(0x333333)
     .addField("Removes a role from the desired member", "Requires the 'Manage Roles' permission \nUsage: h.removerole @Brickman @Owner")
