@@ -236,16 +236,10 @@ if (message.content.startsWith(config.prefix + "purge")) {
       .setThumbnail(message.guild.iconURL)
   message.channel.send({embed});
   
-  
-   } if (message.content.startsWith(config.prefix + "meme")) {
+  } if (message.content.startsWith(config.prefix + "meme")) {
     var subs = [`https://www.reddit.com/r/dankmemes.json?sort=top&t=week`, `https://www.reddit.com/r/memes.json?sort=top&t=week`, `https://www.reddit.com/r/dank_meme.json?sort=top&t=week`];
     const randomsubs = subs[Math.floor(Math.random() * subs.length)];
     try {
-      let subsname = {
-        "1": "r/dankmemes",
-        "2": "r/memes",
-        "3": "r/dank_meme"
-      }
       const { body } = await snekfetch
           .get(randomsubs)
           .query({ limit: 800 });
@@ -258,7 +252,7 @@ if (message.content.startsWith(config.prefix + "purge")) {
       .setDescription("Posted by: u/" + allowed[randomnumber].data.author)
       .setImage(allowed[randomnumber].data.url)
       .addField("Other info:", "Upvotes: " + allowed[randomnumber].data.ups + " | Comments: " + allowed[randomnumber].data.num_comments)
-      .setFooter("Memes provided by " + subsname[subs.length])
+      .setFooter("Memes provided by reddit")
       message.channel.send(memeembed)
   } catch (err) {
       return console.log(err);
@@ -285,7 +279,42 @@ if (message.content.startsWith(config.prefix + "purge")) {
       return console.log(err);
 
   }
-  
+} if (message.content.startsWith(config.prefix + "cat")) {
+  var sub = "https://www.reddit.com/r/kittens.json?sort=top&t=week"
+  try {
+    const { body } = await snekfetch
+        .get(sub)
+        .query({ limit: 800 });
+    const allowed = message.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
+    if (!allowed.length) return message.channel.send('Sorry, this post seems to be NSFW. Heartstring is not a NSFW bot');
+    const randomnumber = Math.floor(Math.random() * allowed.length)
+    const subembed = new Discord.RichEmbed()
+    .setColor(0x333333)
+    .setImage(allowed[randomnumber].data.url)
+    .setFooter("Provided by r/kittens")
+    message.channel.send(subembed)
+} catch (err) {
+    return console.log(err);
+
+}
+} if (message.content.startsWith(config.prefix + "dog")) {
+  var sub = "https://www.reddit.com/r/rarepuppers.json?sort=top&t=week"
+  try {
+    const { body } = await snekfetch
+        .get(sub)
+        .query({ limit: 800 });
+    const allowed = message.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
+    if (!allowed.length) return message.channel.send('Sorry, this post seems to be NSFW. Heartstring is not a NSFW bot');
+    const randomnumber = Math.floor(Math.random() * allowed.length)
+    const subembed = new Discord.RichEmbed()
+    .setColor(0x333333)
+    .setImage(allowed[randomnumber].data.url)
+    .setFooter("Provided by r/rarepuppers")
+    message.channel.send(subembed)
+} catch (err) {
+    return console.log(err);
+
+}
 //botinfo
 
     } if (message.content.startsWith(config.prefix + "bi")) {
@@ -458,8 +487,17 @@ message.channel.send(userinfoo);
   if (!message.member.hasPermission("MANAGE_ROLES")) return message.channel.send("You do not have permission for this!")
 userToRemove.removeRole(roleToRemove); 
 return message.channel.send("Succesfully removed role " + roleToRemove + " from member " + userToRemove + "!");
-
     //help
+  } if (message.content === config.prefix + "help cat") {
+    var cat = new Discord.RichEmbed()
+    .setColor(0x333333)
+    .addField("Shows a cute picture of a cat", "Provided by r/kittens")
+    message.channel.send(cat)
+  } if (message.content === config.prefix + "help dog") {
+    var dog = new Discord.RichEmbed()
+    .setColor(0x333333)
+    .addField("Shows a cute picture of a dog", "Provided by r/rarepuppers")
+    message.channel.send(dog)
   } if (message.content === config.prefix + "help addrole") {
     var roleremoveembed = new Discord.RichEmbed()
     .setColor(0x333333)
@@ -553,8 +591,9 @@ return message.channel.send("Succesfully removed role " + roleToRemove + " from 
 .setColor(0x333333)
 .addField("Info Commands", "``` userinfo \n botinfo \n serverinfo```", true)
 .addField("Moderation Commands", "``` kick \n ban \n purge \n addrole \n removerole```", true)
-.addField("Fun Commands", "``` 8ball \n meme \n reddit \n roll```", true)
+.addField("Fun Commands", "``` 8ball \n roll```", true)
 .addField("General Commands", "``` help \n ping \n say \n avatar \n uptime```", true)
+.addField("Reddit", "``` reddit \n meme \n dog \n cat```", true)
 .addField("Developer", "``` eval```", true)
 .addField("Links", "[Website](https://brickman.glitch.me/heartstring.html) | [DBL](https://discordbots.org/bot/562151876607344664) | [Github Repo](https://github.com/Brickmanbots/heartstring)")
 .setFooter("Created by Brickman#4669", client.user.avatarURL)
