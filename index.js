@@ -69,6 +69,15 @@ message.channel.send("Thank you for your suggestion")
           return message.reply("I cannot kick this user!");
         let reason = args.slice(1).join(' ');
         if(!reason) reason = "No reason provided";
+        let kickedguild = message.guild.name
+        let moderatorkick = message.author.username
+        let moderatordiscrimkick = message.author.discriminator
+        const kickembed = new Discord.RichEmbed()
+        .setTitle("You have been kicked")
+        .setDescription("You have been kicked from " + kickedguild)
+        .addField("Moderator:", moderatorkick + moderatordiscrimkick)
+        .addField("Reason: ", reason)
+        await member.send(kickembed)
         await member.kick(reason)
           .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
         message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
@@ -88,7 +97,15 @@ message.channel.send("Thank you for your suggestion")
     
         let reason = args.slice(1).join(' ');
         if(!reason) reason = "No reason provided";
-        
+        let bannedguild = message.guild.name
+        let moderatorban = message.author.username
+        let moderatordiscrim = message.author.discriminator
+        const banembed = new Discord.RichEmbed()
+        .setTitle("You have been banned")
+        .setDescription("You have been banned from " + bannedguild)
+        .addField("Moderator:", moderatorban)
+        .addField("Reason: ", reason)
+        await member.send(banembed)
         await member.ban(reason)
           .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
         message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
@@ -375,7 +392,20 @@ if (message.content.startsWith(config.prefix + "purge")) {
             text: "Created by Brickman#4669"
           }}})
       
-
+        } if (message.content.startsWith(config.prefix + "bean")) {
+          let beaner = message.author.username
+          let beandiscrim = message.author.discriminator
+          let beanedguild = message.guild.name
+          let beaned = message.mentions.members.first();
+          let beanedreason = args.slice(1).join(' ');
+          if (!beaned) return message.channel.send("Please mention a member to bean!");
+          const beanbed = new Discord.RichEmbed()
+          .setTitle("You've been beaned!")
+          .setDescription("You have been beaned from " + beanedguild)
+          .addField("Moderator: ", beaner + "#" + beandiscrim)
+          .addField("Reason: ", beanedreason)
+          .setFooter("Note: This isn't a real ban")
+          beaned.send(beanbed)
 //user info
 } if  (message.content.startsWith(config.prefix + "ui")) {
   let bot = {
