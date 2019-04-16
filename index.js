@@ -436,15 +436,21 @@ message.channel.send(userinfoo);
 }
 //role assign
 } if (message.content.startsWith(config.prefix + "addrole")) {
-  if (!message.member.hasPermission("MANAGE_ROLES")) return message.channel.send("You do not have permission for this!")
   let userToModify = message.mentions.members.first();
   let roleToAdd = message.mentions.roles.first();
-  userToModify.addRole(roleToAdd);  
-} if (message.content.startsWith(config.prefix + "removerole")) {
+  let argsrole = args.join(" ")
+  if (!argsrole) return message.channel.send("Please enter a mentioned user and a mentioned role to assign (e.g h.addrole @Brickman @Moderator)")
   if (!message.member.hasPermission("MANAGE_ROLES")) return message.channel.send("You do not have permission for this!")
+  userToModify.addRole(roleToAdd); 
+  return message.channel.send("Succesfully added role " + roleToAdd + " to member " + userToModify + "!");
+
+} if (message.content.startsWith(config.prefix + "removerole")) {
   let userToRemove = message.mentions.members.first();
   let roleToRemove = message.mentions.roles.first();
+  if (!args) return message.channel.send("Please enter a mentioned user and a mentioned role to remove (e.g h.removerole @Brickman @Moderator)")
+  if (!message.member.hasPermission("MANAGE_ROLES")) return message.channel.send("You do not have permission for this!")
 userToRemove.removeRole(roleToRemove); 
+return message.channel.send("Succesfully removed role " + roleToRemove + " from member " + userToRemove + "!");
 
     //help
   } if (message.content === config.prefix + "help addrole") {
