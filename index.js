@@ -436,12 +436,12 @@ message.channel.send(userinfoo);
 }
 //role assign
 } if (message.content.startsWith(config.prefix + "addrole")) {
-  if (!message.author.hasPermission("MANAGE_ROLES")) return message.channel.send("You do not have permission for this!")
+  if (!message.member.hasPermission("MANAGE_ROLES")) return message.channel.send("You do not have permission for this!")
   let userToModify = message.mentions.members.first();
   let roleToAdd = message.mentions.roles.first();
   userToModify.addRole(roleToAdd);  
 } if (message.content.startsWith(config.prefix + "removerole")) {
-  if (!message.author.hasPermission("MANAGE_ROLES")) return message.channel.send("You do not have permission for this!")
+  if (!message.member.hasPermission("MANAGE_ROLES")) return message.channel.send("You do not have permission for this!")
   let userToRemove = message.mentions.members.first();
   let roleToRemove = message.mentions.roles.first();
 userToRemove.removeRole(roleToRemove); 
