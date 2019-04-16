@@ -236,10 +236,16 @@ if (message.content.startsWith(config.prefix + "purge")) {
       .setThumbnail(message.guild.iconURL)
   message.channel.send({embed});
   
-  } if (message.content.startsWith(config.prefix + "meme")) {
+  
+   } if (message.content.startsWith(config.prefix + "meme")) {
     var subs = [`https://www.reddit.com/r/dankmemes.json?sort=top&t=week`, `https://www.reddit.com/r/memes.json?sort=top&t=week`, `https://www.reddit.com/r/dank_meme.json?sort=top&t=week`];
     const randomsubs = subs[Math.floor(Math.random() * subs.length)];
     try {
+      let subsname = {
+        "1": "r/dankmemes",
+        "2": "r/memes",
+        "3": "r/dank_meme"
+      }
       const { body } = await snekfetch
           .get(randomsubs)
           .query({ limit: 800 });
@@ -252,7 +258,7 @@ if (message.content.startsWith(config.prefix + "purge")) {
       .setDescription("Posted by: u/" + allowed[randomnumber].data.author)
       .setImage(allowed[randomnumber].data.url)
       .addField("Other info:", "Upvotes: " + allowed[randomnumber].data.ups + " | Comments: " + allowed[randomnumber].data.num_comments)
-      .setFooter("Memes provided by reddit")
+      .setFooter("Memes provided by " + subsname[subs.length])
       message.channel.send(memeembed)
   } catch (err) {
       return console.log(err);
@@ -273,12 +279,13 @@ if (message.content.startsWith(config.prefix + "purge")) {
       .setDescription("Posted by: u/" + allowed[randomnumber].data.author)
       .setImage(allowed[randomnumber].data.url)
       .addField("Other info:", "Upvotes: " + allowed[randomnumber].data.ups + " | Comments: " + allowed[randomnumber].data.num_comments)
-      .setFooter("Provided by reddit")
+      .setFooter("Provided by r/" + args)
       message.channel.send(subembed)
   } catch (err) {
       return console.log(err);
 
   }
+  
 //botinfo
 
     } if (message.content.startsWith(config.prefix + "bi")) {
