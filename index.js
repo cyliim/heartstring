@@ -436,7 +436,7 @@ message.channel.send(userinfoo);
 }
 //role assign
 } if (message.content.startsWith(config.prefix + "addrole")) {
-  if (!message.author.hasPermission("MANAGE_ROLES")) 
+  if (!message.author.hasPermission("MANAGE_ROLES")) return message.channel.send("You do not have permission for this!")
   let userToModify = message.mentions.members.first();
   let roleToAdd = message.mentions.roles.first();
   userToModify.addRole(roleToAdd);  
