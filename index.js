@@ -365,7 +365,6 @@ var userinf = new Discord.RichEmbed()
 .addField('Current Nickname: ', message.author.toString(), true)
 .addField("Current Status: ", status[message.author.presence.status], true)
 .addField("Currently Playing: ", message.author.presence.game || "Nothing", true)
-.addField("Joined On: ", newJoined, true)
 .addField("Account Type: ", bot[message.author.bot], true)
 .addField("Created On: ", newDate, true)
 .setFooter("Created by Brickman#4669", client.user.avatarURL)
@@ -374,8 +373,6 @@ message.channel.send(userinf);
 }else{
 let midate = memberInfo.user.createdAt
 let midateF = midate.toLocaleDateString();
-let mijoined = memberInfo.joinedAt
-let mijoinedF = mijoined.toLocaleDateString();
 var userinfoo = new Discord.RichEmbed()
 .setAuthor(memberInfo.displayName, memberInfo.user.avatarURL)
 .setThumbnail(memberInfo.user.avatarURL)
@@ -386,7 +383,6 @@ var userinfoo = new Discord.RichEmbed()
 .addField('Current Nickname: ', memberInfo.toString(), true)
 .addField("Current Status: ", status[memberInfo.user.presence.status], true)
 .addField("Currently Playing: ", memberInfo.user.presence.game || "Nothing", true)
-.addField("Joined On: ", mijoinedF, true)
 .addField("Account Type: ", bot[memberInfo.user.bot], true)
 .addField("Created On: ", midateF ,true)
 .setFooter("Created by Brickman#4669", client.user.avatarURL)
@@ -416,7 +412,6 @@ var userinf = new Discord.RichEmbed()
 .addField('Current Nickname: ', message.author.toString(), true)
 .addField("Current Status: ", status[message.author.presence.status], true)
 .addField("Currently Playing: ", message.author.presence.game || "Nothing", true )
-.addField("Joined On: ", newJoined, true)
 .addField("Account Type: ", bot[message.author.bot], true)
 .addField("Created On: ", newDate, true)
 .setFooter("Created by Brickman#4669", client.user.avatarURL)
@@ -425,8 +420,6 @@ message.channel.send(userinf);
 }else{
 let midate = memberInfo.user.createdAt
 let midateF = midate.toLocaleDateString();
-let mijoined = memberInfo.joinedAt
-let mijoinedF = mijoined.toLocaleDateString();
 var userinfoo = new Discord.RichEmbed()
 .setAuthor(memberInfo.displayName, memberInfo.user.avatarURL)
 .setThumbnail(memberInfo.user.avatarURL)
@@ -436,17 +429,34 @@ var userinfoo = new Discord.RichEmbed()
 .addField("ID:", memberInfo.id, true)
 .addField("Current Status: ", status[message.author.presence.status], true)
 .addField("Currently Playing: ", message.author.presence.game || "Nothing", true)
-.addField("Joined On: ", mijoinedF, true)
 .addField("Account Type: ", bot[memberInfo.user.bot], true)
 .addField("Created On: ", midateF, true)
 .setFooter("Created by Brickman#4669", client.user.avatarURL)
 message.channel.send(userinfoo);
 }
-//warn
-
-
+//role assign
+} if (message.content.startsWith(config.prefix + "addrole")) {
+  if (!message.author.hasPermission(MANAGE_ROLES))
+  let userToModify = message.mentions.members.first();
+  let roleToAdd = message.mentions.roles.first();
+  userToModify.addRole(roleToAdd);  
+} if (message.content.startsWith(config.prefix + "removerole")) {
+  if (!message.author.hasPermission(MANAGE_ROLES))
+  let userToRemove = message.mentions.members.first();
+  let roleToRemove = message.mentions.roles.first();
+userToRemove.removeRole(roleToRemove); 
 
     //help
+  } if (message.content === config.prefix + "help roleremove") {
+    var roleremoveembed = new Discord.RichEmbed()
+    .setColor(0x333333)
+    .addField("Adds a role to the desired member", "Requires the 'Manage Roles' permission \nUsage: h.addrole @Brickman @Owner")
+    message.channel.send(roleremoveembed)
+  } if (message.content === config.prefix + "help roleremove") {
+    var roleaddembed = new Discord.RichEmbed()
+    .setColor(0x333333)
+    .addField("Removes a role from the desired member", "Requires the 'Manage Roles' permission \nUsage: h.removerole @Brickman @Owner")
+    message.channel.send(roleaddembed)
   } if (message.content === config.prefix + "help serverinfo") {
     var serverinfo = new Discord.RichEmbed()
     .setColor(0x333333)
@@ -529,7 +539,7 @@ message.channel.send(userinfoo);
 .setDescription("Use `help <command>` for more info on each command")
 .setColor(0x333333)
 .addField("Info Commands", "``` userinfo \n botinfo \n serverinfo```", true)
-.addField("Moderation Commands", "``` kick \n ban \n purge```", true)
+.addField("Moderation Commands", "``` kick \n ban \n purge \n addrole \n removerole```", true)
 .addField("Fun Commands", "``` 8ball \n meme \n reddit \n roll```", true)
 .addField("General Commands", "``` help \n ping \n say \n avatar \n uptime```", true)
 .addField("Developer", "``` eval```", true)
