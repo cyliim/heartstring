@@ -73,6 +73,7 @@ message.channel.send("Thank you for your suggestion")
         let moderatorkick = message.author.username
         let moderatordiscrimkick = message.author.discriminator
         const kickembed = new Discord.RichEmbed()
+        .setColor(0x333333)
         .setTitle("You have been kicked")
         .setDescription("You have been kicked from " + kickedguild)
         .addField("Moderator:", moderatorkick + moderatordiscrimkick)
@@ -101,9 +102,10 @@ message.channel.send("Thank you for your suggestion")
         let moderatorban = message.author.username
         let moderatordiscrim = message.author.discriminator
         const banembed = new Discord.RichEmbed()
+        .setColor(0x333333)
         .setTitle("You have been banned")
         .setDescription("You have been banned from " + bannedguild)
-        .addField("Moderator:", moderatorban)
+        .addField("Moderator:", moderatorban + moderatordiscrim)
         .addField("Reason: ", reason)
         await member.send(banembed)
         await member.ban(reason)
@@ -400,6 +402,7 @@ if (message.content.startsWith(config.prefix + "purge")) {
           let beanedreason = args.slice(1).join(' ');
           if (!beaned) return message.channel.send("Please mention a member to bean!");
           const beanbed = new Discord.RichEmbed()
+          .setColor(0x333333)
           .setTitle("You've been beaned!")
           .setDescription("You have been beaned from " + beanedguild)
           .addField("Moderator: ", beaner + "#" + beandiscrim)
@@ -504,20 +507,24 @@ message.channel.send(userinfoo);
 } if (message.content.startsWith(config.prefix + "addrole")) {
   let userToModify = message.mentions.members.first();
   let roleToAdd = message.mentions.roles.first();
-  let argsrole = args.join(" ")
-  if (!argsrole) return message.channel.send("Please enter a mentioned user and a mentioned role to assign (e.g h.addrole @Brickman @Moderator)")
   if (!message.member.hasPermission("MANAGE_ROLES")) return message.channel.send("You do not have permission for this!")
+  if (!argsrole) return message.channel.send("Please enter a mentioned user and a mentioned role to assign (e.g h.addrole @Brickman @Moderator)")
   userToModify.addRole(roleToAdd); 
   return message.channel.send("Succesfully added role " + roleToAdd + " to member " + userToModify + "!");
 
 } if (message.content.startsWith(config.prefix + "removerole")) {
   let userToRemove = message.mentions.members.first();
   let roleToRemove = message.mentions.roles.first();
-  if (!args) return message.channel.send("Please enter a mentioned user and a mentioned role to remove (e.g h.removerole @Brickman @Moderator)")
   if (!message.member.hasPermission("MANAGE_ROLES")) return message.channel.send("You do not have permission for this!")
+  if (!args) return message.channel.send("Please enter a mentioned user and a mentioned role to remove (e.g h.removerole @Brickman @Moderator)")
 userToRemove.removeRole(roleToRemove); 
 return message.channel.send("Succesfully removed role " + roleToRemove + " from member " + userToRemove + "!");
     //help
+  } if (message.content === config.prefix + "help bean") {
+    var bean = new Discord.RichEmbed()
+    .setColor(0x333333)
+    .addField("Beans someone; a fake ban", "Usage: h.bean <user> [reason] \nExample: h.bean @Brickman Get Beaned!!")
+    message.channel.send(bean)
   } if (message.content === config.prefix + "help cat") {
     var cat = new Discord.RichEmbed()
     .setColor(0x333333)
@@ -531,12 +538,12 @@ return message.channel.send("Succesfully removed role " + roleToRemove + " from 
   } if (message.content === config.prefix + "help addrole") {
     var roleremoveembed = new Discord.RichEmbed()
     .setColor(0x333333)
-    .addField("Adds a role to the desired member", "Requires the 'Manage Roles' permission \nUsage: h.addrole @Brickman @Owner")
+    .addField("Adds a role to the desired member", "Requires the 'Manage Roles' permission \nUsage: h.addrole <user> <role> \nExample: h.addrole @Brickman @Moderator")
     message.channel.send(roleremoveembed)
   } if (message.content === config.prefix + "help removerole") {
     var roleaddembed = new Discord.RichEmbed()
     .setColor(0x333333)
-    .addField("Removes a role from the desired member", "Requires the 'Manage Roles' permission \nUsage: h.removerole @Brickman @Owner")
+    .addField("Removes a role from the desired member", "Requires the 'Manage Roles' permission \nUsage: h.removerole <user> <role> \nExample: h.removerole @Brickman @Moderator")
     message.channel.send(roleaddembed)
   } if (message.content === config.prefix + "help serverinfo") {
     var serverinfo = new Discord.RichEmbed()
@@ -621,7 +628,7 @@ return message.channel.send("Succesfully removed role " + roleToRemove + " from 
 .setColor(0x333333)
 .addField("Info Commands", "``` userinfo \n botinfo \n serverinfo```", true)
 .addField("Moderation Commands", "``` kick \n ban \n purge \n addrole \n removerole```", true)
-.addField("Fun Commands", "``` 8ball \n roll```", true)
+.addField("Fun Commands", "``` 8ball \n roll \n bean```", true)
 .addField("General Commands", "``` help \n ping \n say \n avatar \n uptime```", true)
 .addField("Reddit", "``` reddit \n meme \n dog \n cat```", true)
 .addField("Developer", "``` eval```", true)
