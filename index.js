@@ -437,7 +437,7 @@ var userinf = new Discord.RichEmbed()
 .addField("Current Status: ", status[message.author.presence.status], true)
 .addField("Currently Playing: ", message.author.presence.game || "Nothing", true)
 .addField("Account Type: ", bot[message.author.bot], true)
-.addField("Joined  On: ", newJoined, true)
+.addField("Joined On: ", newJoined, true)
 .addField("Created On: ", newDate, true)
 .setFooter("Created by Brickman#4669", client.user.avatarURL)
 
