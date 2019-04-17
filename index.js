@@ -10,6 +10,8 @@ client.on("ready", () => {
   client.on("message", async message => {
     const date = message.author.createdAt;
     const newDate = date.toLocaleDateString();
+          const joined = message.member.joinedAt;
+    const newJoined = joined.toLocaleDateString()
     if (!message.content.startsWith(config.prefix) || message.author.bot) return;
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
