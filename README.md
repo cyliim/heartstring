@@ -6,4 +6,4 @@ Heartstring is a general purpose bot, filling the roles of a lot of bots on serv
 * User and server info
 * Purging messages
 * Searching subreddits<br><br>
-Find a full list of commands [here](https://brickman.glitch.me/heartstring.html)
+Find a full list of commands [here](https://heartstring.glitch.me/commands.html)
