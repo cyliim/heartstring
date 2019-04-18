@@ -257,49 +257,45 @@ if (message.content.startsWith(config.prefix + "purge")) {
       .setThumbnail(message.guild.iconURL)
   message.channel.send({embed});
   
-  } if (message.content.startsWith(config.prefix + "meme")) {
-    var subs = [`https://www.reddit.com/r/dankmemes.json?sort=top&t=week`, `https://www.reddit.com/r/memes.json?sort=top&t=week`, `https://www.reddit.com/r/dank_meme.json?sort=top&t=week`];
-    const randomsubs = subs[Math.floor(Math.random() * subs.length)];
-    try {
-      const { body } = await snekfetch
-          .get(randomsubs)
-          .query({ limit: 800 });
-      const allowed = message.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
-      if (!allowed.length) return message.channel.send('Sorry, this post seems to be NSFW. Heartstring is not a NSFW bot');
-      const randomnumber = Math.floor(Math.random() * allowed.length)
-      const memeembed = new Discord.RichEmbed()
-      .setColor(0x333333)
-      .setTitle(allowed[randomnumber].data.title)
-      .setDescription("Posted by: u/" + allowed[randomnumber].data.author)
-      .setImage(allowed[randomnumber].data.url)
-      .addField("Other info:", "Upvotes: " + allowed[randomnumber].data.ups + " | Comments: " + allowed[randomnumber].data.num_comments)
-      .setFooter("Memes provided by reddit")
-      message.channel.send(memeembed)
-  } catch (err) {
-      return console.log(err);
-  }
-  } if (message.content.startsWith(config.prefix + "reddit")) {
-    if (!args) return message.channel.send("Please provide a subreddit (i.e dankmemes, softwaregore)");
-    var sub = "https://www.reddit.com/r/" + args + ".json?sort=top&t=week"
-    try {
-      const { body } = await snekfetch
-          .get(sub)
-          .query({ limit: 800 });
-      const allowed = message.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
-      if (!allowed.length) return message.channel.send('Sorry, this post seems to be NSFW. Heartstring is not a NSFW bot');
-      const randomnumber = Math.floor(Math.random() * allowed.length)
-      const subembed = new Discord.RichEmbed()
-      .setColor(0x333333)
-      .setTitle(allowed[randomnumber].data.title)
-      .setDescription("Posted by: u/" + allowed[randomnumber].data.author)
-      .setImage(allowed[randomnumber].data.url)
-      .addField("Other info:", "Upvotes: " + allowed[randomnumber].data.ups + " | Comments: " + allowed[randomnumber].data.num_comments)
-      .setFooter("Provided by r/" + args)
-      message.channel.send(subembed)
-  } catch (err) {
-      return console.log(err);
+} if (message.content.startsWith(config.prefix + "meme")) {
+  var subs = [`https://www.reddit.com/r/dankmemes.json?sort=top&t=week`, `https://www.reddit.com/r/memes.json?sort=top&t=week`, `https://www.reddit.com/r/dank_meme.json?sort=top&t=week`];
+  const randomsubs = subs[Math.floor(Math.random() * subs.length)];
+  try {
+    const { body } = await snekfetch
+        .get(randomsubs)
+        .query({ limit: 800 });
+    const allowed = message.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
+    if (!allowed.length) return message.channel.send('Sorry, this post seems to be NSFW. Heartstring is not a NSFW bot');
+    const randomnumber = Math.floor(Math.random() * allowed.length)
+    const memeembed = new Discord.RichEmbed()
+    .setColor(0x333333)
+    .setTitle(allowed[randomnumber].data.title)
+    .setImage(allowed[randomnumber].data.url)
+    .addField("Link: ", allowed[randomnumber].data.url)
+    message.channel.send(memeembed)
+} catch (err) {
+    return console.log(err);
+}
+} if (message.content.startsWith(config.prefix + "reddit")) {
+  if (!args) return message.channel.send("Please provide a subreddit (i.e dankmemes, softwaregore)");
+  var sub = "https://www.reddit.com/r/" + args + ".json?sort=top&t=week"
+  try {
+    const { body } = await snekfetch
+        .get(sub)
+        .query({ limit: 800 });
+    const allowed = message.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
+    if (!allowed.length) return message.channel.send('Sorry, this post seems to be NSFW. Heartstring is not a NSFW bot');
+    const randomnumber = Math.floor(Math.random() * allowed.length)
+    const subembed = new Discord.RichEmbed()
+    .setColor(0x333333)
+    .setTitle(allowed[randomnumber].data.title)
+    .setImage(allowed[randomnumber].data.url)
+    .addField("Link: ", allowed[randomnumber].data.url)
+    message.channel.send(subembed)
+} catch (err) {
+    return console.log(err);
 
-  }
+}
 } if (message.content.startsWith(config.prefix + "cat")) {
   var sub = "https://www.reddit.com/r/kittens.json?sort=top&t=week"
   try {
