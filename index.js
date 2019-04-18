@@ -642,7 +642,7 @@ return message.channel.send("Succesfully removed role " + roleToRemove + " from 
 .addField("General Commands", "``` help \n ping \n say \n avatar \n uptime```", true)
 .addField("Reddit", "``` reddit \n meme \n dog \n cat```", true)
 .addField("Developer", "``` eval```", true)
-.addField("Links", "[Website](https://brickman.glitch.me/heartstring.html) | [DBL](https://discordbots.org/bot/562151876607344664) | [Github Repo](https://github.com/Brickmanbots/heartstring)")
+.addField("Links", "[Website](https://heartstring.brickman.me) | [DBL](https://discordbots.org/bot/562151876607344664) | [Github Repo](https://github.com/Brickmanbots/heartstring)")
 .setFooter("Created by Brickman#4669", client.user.avatarURL)
       message.channel.send(help)
       
