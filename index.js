@@ -5,12 +5,12 @@ const snekfetch = require("snekfetch")
 //8ball list
 var ball =["It is certain.", "It is decidedly so.", "Without a doubt.", "Yes - definitely.", "You may rely on it.", "As I see it, yes.", "Most likely.", "Outlook good.", "Yes.", "Signs point to yes.", "Reply hazy, try again.", "Ask again later.", "Better not tell you now.", "Cannot predict now.", "Concentrate and ask again.", " Don't count on it.", "My reply is no.", "My sources say no.", "Outlook not so good.", "Very doubtful."];
 client.on("ready", () => {
-    client.user.setActivity(`h.help || ${client.guilds.size} servers`)
+    client.user.setActivity(`hd.help || ${client.guilds.size} servers`)
       });
   client.on("message", async message => {
     const date = message.author.createdAt;
     const newDate = date.toLocaleDateString();
-          const joined = message.member.joinedAt;
+    const joined = message.member.joinedAt;
     const newJoined = joined.toLocaleDateString()
     if (!message.content.startsWith(config.prefix) || message.author.bot) return;
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
@@ -29,12 +29,12 @@ client.on("ready", () => {
       } if (message.content.startsWith(config.prefix + `8ball`)) {
   var repl3 = ball[Math.floor(Math.random()*ball.length)];
 message.channel.send(repl3)
-} if (message.content.startsWith(config.prefix + "suggest")) {
+} if (message.content.startsWith(config.prefix + "contact")) {
   if (!args.length) {
-    return message.channel.send(`You need to provide a suggestion`);
+    return message.channel.send(`You need to provide something to contact the developer with.`);
     }
-client.channels.get("563804889268879390").send("New Suggestion: **" + args.join(" ") + `** From: ${message.author.username}#${message.author.discriminator}`)
-message.channel.send("Thank you for your suggestion")
+client.channels.get("563804889268879390").send("New Contact Request: **" + args.join(" ") + `** From: ${message.author.username}#${message.author.discriminator}`)
+message.channel.send("Thank you for contacting")
 //say
 
        } if (message.content.startsWith(config.prefix + "say")) {
@@ -265,7 +265,7 @@ if (message.content.startsWith(config.prefix + "purge")) {
         .get(randomsubs)
         .query({ limit: 800 });
     const allowed = message.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
-    if (!allowed.length) return message.channel.send('Sorry, this post seems to be NSFW. Heartstring is not a NSFW bot');
+    if (!allowed.length) return message.channel.send('');
     const randomnumber = Math.floor(Math.random() * allowed.length)
     const memeembed = new Discord.RichEmbed()
     .setColor(0x333333)
@@ -284,7 +284,7 @@ if (message.content.startsWith(config.prefix + "purge")) {
         .get(sub)
         .query({ limit: 800 });
     const allowed = message.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
-    if (!allowed.length) return message.channel.send('Sorry, this post seems to be NSFW. Heartstring is not a NSFW bot');
+    if (!allowed.length) return message.channel.send('Please check the name of subreddit is correct');
     const randomnumber = Math.floor(Math.random() * allowed.length)
     const subembed = new Discord.RichEmbed()
     .setColor(0x333333)
@@ -296,6 +296,7 @@ if (message.content.startsWith(config.prefix + "purge")) {
     return console.log(err);
 
 }
+  
 } if (message.content.startsWith(config.prefix + "cat")) {
   var sub = "https://www.reddit.com/r/kittens.json?sort=top&t=week"
   try {
@@ -303,7 +304,7 @@ if (message.content.startsWith(config.prefix + "purge")) {
         .get(sub)
         .query({ limit: 800 });
     const allowed = message.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
-    if (!allowed.length) return message.channel.send('Sorry, this post seems to be NSFW. Heartstring is not a NSFW bot');
+    if (!allowed.length) return message.channel.send('Please check the name of subreddit is correct');
     const randomnumber = Math.floor(Math.random() * allowed.length)
     const subembed = new Discord.RichEmbed()
     .setColor(0x333333)
@@ -321,7 +322,7 @@ if (message.content.startsWith(config.prefix + "purge")) {
         .get(sub)
         .query({ limit: 800 });
     const allowed = message.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
-    if (!allowed.length) return message.channel.send('Sorry, this post seems to be NSFW. Heartstring is not a NSFW bot');
+    if (!allowed.length) return message.channel.send('Please check the name of subreddit is correct');
     const randomnumber = Math.floor(Math.random() * allowed.length)
     const subembed = new Discord.RichEmbed()
     .setColor(0x333333)
@@ -332,6 +333,8 @@ if (message.content.startsWith(config.prefix + "purge")) {
     return console.log(err);
 
 }
+
+//emojibig
 //botinfo
 
     } if (message.content.startsWith(config.prefix + "bi")) {
@@ -399,6 +402,7 @@ if (message.content.startsWith(config.prefix + "purge")) {
           let beaned = message.mentions.members.first();
           let beanedreason = args.slice(1).join(' ');
           if (!beaned) return message.channel.send("Please mention a member to bean!");
+          if (!beanedreason) return message.channel.send("Please provide a reason!")
           const beanbed = new Discord.RichEmbed()
           .setColor(0x333333)
           .setTitle("You've been beaned!")
@@ -407,6 +411,7 @@ if (message.content.startsWith(config.prefix + "purge")) {
           .addField("Reason: ", beanedreason)
           .setFooter("Note: This isn't a real ban")
           beaned.send(beanbed)
+          message.channel.send("User has been beaned!").then(message.delete[2])
 //user info
 } if  (message.content.startsWith(config.prefix + "ui")) {
   let bot = {
@@ -433,7 +438,7 @@ var userinf = new Discord.RichEmbed()
 .addField("Current Status: ", status[message.author.presence.status], true)
 .addField("Currently Playing: ", message.author.presence.game || "Nothing", true)
 .addField("Account Type: ", bot[message.author.bot], true)
-.addField("Joined  On: ", newJoined, true)
+.addField("Joined On: ", newJoined, true)
 .addField("Created On: ", newDate, true)
 .setFooter("Created by Brickman#4669", client.user.avatarURL)
 
@@ -525,11 +530,14 @@ message.channel.send(userinfoo);
   if (!args) return message.channel.send("Please enter a mentioned user and a mentioned role to remove (e.g h.removerole @Brickman @Moderator)")
 userToRemove.removeRole(roleToRemove); 
 return message.channel.send("Succesfully removed role " + roleToRemove + " from member " + userToRemove + "!");
-    //help
+
+
+//help
+ 
   } if (message.content === config.prefix + "help bean") {
     var bean = new Discord.RichEmbed()
     .setColor(0x333333)
-    .addField("Beans someone; a fake ban", "Usage: h.bean <user> [reason] \nExample: h.bean @Brickman Get Beaned!!")
+    .addField("Beans someone; a fake ban", "Usage: h.bean <user> <reason> \nExample: h.bean @Brickman Get Beaned!!")
     message.channel.send(bean)
   } if (message.content === config.prefix + "help cat") {
     var cat = new Discord.RichEmbed()
@@ -624,8 +632,13 @@ return message.channel.send("Succesfully removed role " + roleToRemove + " from 
     } if (message.content === config.prefix + "help eval") {
       var evalembed = new Discord.RichEmbed()
       .setColor(0x333333)
-      .addField("Developer only command; runs code it's prompted with")
+      .addField("Developer only command", "runs code it's prompted with")
     message.channel.send(evalembed)
+  } if (message.content === config.prefix + "help contact") {
+    var contactembed = new Discord.RichEmbed()
+    .setColor(0x333333)
+    .addField("Contact the developer with a suggest or a bug", "Usage: h.contact <bug or suggestion>")
+  message.channel.send(contactembed)
     //help
     } if (message.content === config.prefix + "help") {
       var help = new Discord.RichEmbed()
@@ -635,7 +648,7 @@ return message.channel.send("Succesfully removed role " + roleToRemove + " from 
 .addField("Info Commands", "``` userinfo \n botinfo \n serverinfo```", true)
 .addField("Moderation Commands", "``` kick \n ban \n purge \n addrole \n removerole```", true)
 .addField("Fun Commands", "``` 8ball \n roll \n bean```", true)
-.addField("General Commands", "``` help \n ping \n say \n avatar \n uptime```", true)
+.addField("General Commands", "``` help \n ping \n say \n avatar \n uptime \n contact```", true)
 .addField("Reddit", "``` reddit \n meme \n dog \n cat```", true)
 .addField("Developer", "``` eval```", true)
 .addField("Links", "[Website](https://heartstring.brickman.me) | [DBL](https://discordbots.org/bot/562151876607344664) | [Github Repo](https://github.com/Brickmanbots/heartstring)")
