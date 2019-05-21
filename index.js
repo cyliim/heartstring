@@ -363,7 +363,7 @@ if (message.content.startsWith(config.prefix + "purge")) {
           timestamp: new Date(),
           footer: {
             icon_url: client.user.avatarURL,
-            text: "Created by Brickman#4669"
+            text: "Created by cyliim#4669"
           }}});
     } if (message.content.startsWith(config.prefix + "botinfo")) {
       message.channel.send({embed: {
@@ -392,7 +392,7 @@ if (message.content.startsWith(config.prefix + "purge")) {
           timestamp: new Date(),
           footer: {
             icon_url: client.user.avatarURL,
-            text: "Created by Brickman#4669"
+            text: "Created by cyliim#4669"
           }}})
       
         } if (message.content.startsWith(config.prefix + "bean")) {
@@ -440,7 +440,7 @@ var userinf = new Discord.RichEmbed()
 .addField("Account Type: ", bot[message.author.bot], true)
 .addField("Joined On: ", newJoined, true)
 .addField("Created On: ", newDate, true)
-.setFooter("Created by Brickman#4669", client.user.avatarURL)
+.setFooter("Created by cyliim#4669", client.user.avatarURL)
 
 message.channel.send(userinf);
 }else{
@@ -461,7 +461,7 @@ var userinfoo = new Discord.RichEmbed()
 .addField("Account Type: ", bot[memberInfo.user.bot], true)
 .addField("Joined On: ", mijoinedF, true)
 .addField("Created On: ", midateF ,true)
-.setFooter("Created by Brickman#4669", client.user.avatarURL)
+.setFooter("Created by cyliim#4669", client.user.avatarURL)
 message.channel.send(userinfoo);
 }
 } if (message.content.startsWith(config.prefix + "userinfo")) {
@@ -491,7 +491,7 @@ var userinf = new Discord.RichEmbed()
 .addField("Account Type: ", bot[message.author.bot], true)
 .addField("Joined On: ", newJoined, true)
 .addField("Created On: ", newDate, true)
-.setFooter("Created by Brickman#4669", client.user.avatarURL)
+.setFooter("Created by cyliim#4669", client.user.avatarURL)
 
 message.channel.send(userinf);
 }else{
@@ -511,7 +511,7 @@ var userinfoo = new Discord.RichEmbed()
 .addField("Account Type: ", bot[memberInfo.user.bot], true)
 .addField("Joined On: ", mijoinedF, true)
 .addField("Created On: ", midateF, true)
-.setFooter("Created by Brickman#4669", client.user.avatarURL)
+.setFooter("Created by cyliim#4669", client.user.avatarURL)
 message.channel.send(userinfoo);
 }
 //role assign
@@ -652,7 +652,7 @@ return message.channel.send("Succesfully removed role " + roleToRemove + " from 
 .addField("Reddit", "``` reddit \n meme \n dog \n cat```", true)
 .addField("Developer", "``` eval```", true)
 .addField("Links", "[Website](https://heartstring.brickman.me) | [DBL](https://discordbots.org/bot/562151876607344664) | [Github Repo](https://github.com/Brickmanbots/heartstring)")
-.setFooter("Created by Brickman#4669", client.user.avatarURL)
+.setFooter("Created by cyliim#4669", client.user.avatarURL)
       message.channel.send(help)
       
         } 
