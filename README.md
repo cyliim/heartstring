@@ -7,3 +7,4 @@ Heartstring is a general purpose bot, filling the roles of a lot of bots on serv
 * Purging messages
 * Searching subreddits<br><br>
 Find a full list of commands [here](https://heartstring.glitch.me/commands.html)
+# It's been a good run. Heartstring has been put out of commision
